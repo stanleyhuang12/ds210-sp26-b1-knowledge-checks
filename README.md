@@ -15,6 +15,14 @@ git clone https://github.com/your-username/ds210-sp26-b1-knowledge-checks.git
 cd ds210-sp26-b1-knowledge-checks
 ```
 
+If you haven't already, install `mdbook`:
+
+```bash
+cargo install mdbook
+```
+
+You only need to do that once.
+
 To build the mdbook, run the following command:
 
 ```bash
