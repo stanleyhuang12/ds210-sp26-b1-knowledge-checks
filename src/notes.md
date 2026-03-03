@@ -20,3 +20,20 @@ cargo.lock (details of the packages, dependencies, and versions .. i.e., how to 
 - rust is a compiler language and gets compiled by rust compiler (rustc)
 ### statically and dyanmcially typed languages 
 
+
+## key concepts: 
+1. variable definition: define mutable and immutable variables 
+    - mutability 
+    - shadowing (overwriting a previously defined variable makes it inaccesible)
+
+2. String literals (str) versus string slices (&str)
+    * String::from("") -> string that has a dynamically allocated memory on the heap 
+    * &str a reference to an immutable string 
+
+3. tuples: how to access, create, and destructure tuples 
+    * Accessing a member of the tuple x.0
+
+4. Arrays are fixed in length unless we make it a mutable one 
+    * Indexing an array:  x[0]
+
+5. Enums 
