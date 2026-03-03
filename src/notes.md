@@ -37,3 +37,44 @@ cargo.lock (details of the packages, dependencies, and versions .. i.e., how to 
     * Indexing an array:  x[0]
 
 5. Enums 
+
+
+### functions 
+
+```
+fn main()-> () {
+
+}
+
+the paranthesis () means void or no output; there is likely a side effect (i.e., intermediate changes not outputted)
+```
+
+### specifying ranges
+
+* 1..5 (1, 2,3 ,4)
+* 1..=5 (1, 2, 3, 4, 5)
+
+* while keeps looping if some condition is true
+* for iterates over a range or collection
+* loop is infinite by default (continue and break to control how to break out of the loop)
+    * what are labelled loops (?)
+
+## Enums 
+Enums are custom types that can hold data with variants 
+* if you use match, you must specify every combination 
+
+enum Status {
+    Loading(u32), 
+    Complete(u32), 
+    Error(u32),
+}
+
+let s1 = Status::Loading(100); 
+
+match s1 {
+    Status::Loading(percent) => println!("Loading: {}%", percent),
+    Status::Complete(total) => println!("Completed: {}", total),
+    Status::Error(code) => println!("Error code: {}", code),
+}
+
+we can extract the data enums hold 
