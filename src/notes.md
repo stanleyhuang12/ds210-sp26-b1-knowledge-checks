@@ -78,3 +78,7 @@ match s1 {
 }
 
 we can extract the data enums hold 
+
+#[derive(Debg)] allows us to print enums 
+
+what does println!("{:?}", someText) do again?
