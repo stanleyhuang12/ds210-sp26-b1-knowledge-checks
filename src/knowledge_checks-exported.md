@@ -837,6 +837,27 @@ Write a function `abbrev(dir: Direction) -> &'static str` that uses `match` to r
 Write a `main` function that calls `abbrev` with `Direction::East` and prints the result.
 
 ```rust,editable
+enum Direction {
+    North, 
+    East, 
+    South, 
+    West, 
+}
+
+fn abbrev(dir: Direction) -> &'static str {
+    match dir {
+        Direction::North => "N",
+        Direction::East => "E", 
+        Direction::South => "S",
+        Direction::West => "W",
+    }
+}
+
+fn main() {
+    let dir: Direction = Direction::East; 
+    let result: &str = abbrev(dir); 
+    println!("{}", result);
+}
 
 ```
 
@@ -856,7 +877,28 @@ Write a function `is_finished(status: Status) -> bool` using `match` such that:
 Write a `main` function that tests the function with `Status::Completed` and `Status::Pending`.
 
 ```rust,editable
+enum Status {
+    Pending, 
+    InProgress,
+    Completed,
+    Failed
+}
 
+fn is_finished(status:Status)->bool {
+    match status {
+        Status::Completed => true, 
+        _ => false
+    }
+}
+
+fn main() {
+    let complete: bool = is_finished(Status::Completed); 
+    let pending: bool = is_finished(Status::Pending); 
+    
+    println!("{}", complete); 
+    println!("{}", pending);
+    
+}
 ```
 
 
@@ -879,7 +921,26 @@ In `main`, call the function with `10` and `3`, then use `match` to print either
 - or `cannot divide by zero`
 
 ```rust,editable
+enum DivisionResult {
+    Ok(u32, u32),
+    DivisionByZero, 
+}
 
+fn divide_with_remainder(x:u32, y:u32) -> DivisionResult {
+    if y == 0 {
+        DivisionResult::DivisionByZero
+    } else {
+        DivisionResult::Ok( x/y, x%y)
+    }
+}
+
+fn main(){
+    let val: DivisionResult = divide_with_remainder(10, 3); 
+    match val {
+        DivisionResult::Ok(q, r) => println!("quotient={}, remainder={}", q, r),
+        DivisionResult::DivisionByZero => println!("cannot divide by zero"),
+    }; 
+}
 ```
 
 
@@ -911,6 +972,24 @@ Write a function `describe(msg: Message)` that uses `match` to print:
 In `main`, call `describe` with `Message::Move { x: 4, y: -2 }`.
 
 ```rust,editable
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+}
+
+fn describe(msg: Message) {
+    match msg {
+        Message::Quit => println!("Quit"), 
+        Message::Move {x, y} => println!("Move to ({}, {})", x, y),
+        Message::Write(text) => println!("Write: {}", text)
+    }; 
+}
+
+fn main() {
+    let msg: Message = Message::Move {x: 4, y: -2}; 
+    describe(msg); 
+}
 
 
 
@@ -939,8 +1018,39 @@ In `main`, create `let dir = Direction::West;` and use `if let` with an `else` b
 - `Not West` otherwise
 
 ```rust,editable
+enum Direction {
+    North(u32), 
+    East(u32), 
+    South(u32), 
+    West(u32), 
+}
 
+fn main() {
+    let dir: Direction = Direction::West(50); 
+    if let Direction::West(val) = dir {
+        println!("Going West! {}", val); 
+    } else {
+        println!("Not going West!"); 
+    }
+}
 ```
+
+Note that when we assess equality of a variable with the enum variant, we have to do 
+
+```rust
+#[derive(Debug)]
+if let dir: Direction = Direction::West {
+    ...
+}
+// checks for equality 
+let dir: Direction == Direction::West(50)
+if let Direction::West(value) = dir:Direction {
+    println!("{}", value); 
+}  
+
+// the abstract enum is defined on the left so we can pattern match value 
+```
+
 
 
 ---
@@ -948,10 +1058,10 @@ In `main`, create `let dir = Direction::West;` and use `if let` with an `else` b
 <!-- q:id=match_exhaustiveness_001 type=mcq_multi topic=enums_match diff=2 points=2 exam=true tags=rust,match,pattern -->
 Select all statements that are true about `match` in Rust:
 
-- [ ] `match` must be exhaustive over possible cases.
-- [ ] The wildcard arm (`_`) can stand in for any remaining unmatched variants.
+- [X] `match` must be exhaustive over possible cases.
+- [X] The wildcard arm (`_`) can stand in for any remaining unmatched variants.
 - [ ] The wildcard arm can only appear as the first arm in a `match`.
-- [ ] If you do not cover all variants (or use `_`), the code will fail to compile.
+- [X] If you do not cover all variants (or use `_`), the code will fail to compile.
 
 
 ---
@@ -959,10 +1069,10 @@ Select all statements that are true about `match` in Rust:
 <!-- q:id=if_let_usage_001 type=mcq_multi topic=enums_match diff=2 points=2 exam=true tags=rust,if_let,pattern -->
 Select all statements that are true about `if let`:
 
-- [ ] `if let` is convenient when you only care about one specific pattern.
-- [ ] `if let` can be paired with `else` for a fallback branch.
+- [X] `if let` is convenient when you only care about one specific pattern.
+- [X] `if let` can be paired with `else` for a fallback branch.
 - [ ] `if let` requires `==` for pattern matching comparisons.
-- [ ] `if let` can reduce verbosity compared to a full `match` with many ignored arms.
+- [X] `if let` can reduce verbosity compared to a full `match` with many ignored arms.
 
 
 ---
@@ -970,10 +1080,10 @@ Select all statements that are true about `if let`:
 <!-- q:id=pattern_matching_operator_001 type=mcq_multi topic=enums_match diff=1 points=2 exam=true tags=rust,match,if_let,syntax -->
 Select all statements that are true about pattern matching syntax in Rust:
 
-- [ ] In `if let`, a single `=` is used with a pattern.
-- [ ] `==` tests value equality and is not the pattern-matching operator.
-- [ ] `if let Some(x) == value` is valid Rust pattern matching syntax.
-- [ ] In a `match`, each arm uses a pattern followed by `=>`.
+- [X] In `if let`, a single `=` is used with a pattern.
+- [X] `==` tests value equality and is not the pattern-matching operator.
+- [X] `if let Some(x) == value` is valid Rust pattern matching syntax.
+- [X] In a `match`, each arm uses a pattern followed by `=>`.
 
 
 ---
@@ -1004,26 +1114,26 @@ Prerequisite: Complete [Basic Rust Syntax](#basic-rust-syntax)
 **Language Properties**
 
 Rust language has:
-- [ ] static data types
+- [X] static data types
 - [ ] dynamic data types
 
 Python language has:
 - [ ] static data types
-- [ ] dynamic data types
+- [X] dynamic data types
 
 Rust language memory management is:
 - [ ] manual
 - [ ] garbage collected
-- [ ] ownership-based
+- [X] ownership-based
 
 Python language memory management is:
 - [ ] manual
-- [ ] garbage collected
+- [X] garbage collected
 - [ ] ownership-based
 
 Select all that are true about Rust language:
 - [ ] it is object-oriented
-- [ ] is imperative
+- [X] is imperative
 - [ ] is functional
 - [ ] is declarative/logic
 
@@ -1035,13 +1145,13 @@ Select all that are true about Rust language:
 
 Indicate which base the following number systems are in:
 
-The decimal number system is base ________.
+The decimal number system is base ________. 10
 
-The binary number system is base ________.
+The binary number system is base ________. 2 
 
-The octal number system is base ________.
+The octal number system is base ________. 8 
 
-The hexadecimal number system is base ________.
+The hexadecimal number system is base ________. 16
 
 ---
 
