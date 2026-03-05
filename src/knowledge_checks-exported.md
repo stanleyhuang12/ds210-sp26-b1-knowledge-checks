@@ -660,7 +660,31 @@ Print a message indicating the person's age and their ticket price.
 
 
 ```rust,editable
+fn is_prime(num: i64)->bool {
+    if num <= 1 {
+        return false; 
+    } else {
+        let limit: i64 = (num as f64).sqrt() as i64;
+        
+        for value in 2..=limit {
+            if num % value == 0 { 
+                return false; 
+            } 
+        }
+        true
+    }
+}
 
+fn iterate_through_values(start:i64, end:i64){
+    for i in start..=end {
+        if is_prime(i) {
+            print!("{}, ", i);
+        }
+    }
+}
+fn main() {
+    iterate_through_values(1, 15); 
+}
 
 
 ```
@@ -811,7 +835,19 @@ Write a main function that tests the function by initializing and array to be
 tuple.
 
 ```rust,editable
+fn find_min_max_average(arr: [i32; 5])->(i32, i32, f64){
+    let min: i32 = *arr.iter().min().unwrap();
+    let max: i32 = *arr.iter().max().unwrap();
+    let sum: i32 = arr.iter().sum(); 
+    let average = sum as f64 / arr.len() as f64; 
+    (min, max, average)
+}
 
+fn main() {
+    let arr: [i32; 5] = [37, 42, 56, 12, 9];
+    let (min, max, average) = find_min_max_average(arr);
+    println!("Min: {}, Max: {}, Average: {}", min, max, average); 
+}
 
 ```
 
