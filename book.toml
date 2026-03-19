@@ -3,3 +3,6 @@ authors = ["Thomas Gardos"]
 language = "en"
 src = "src"
 title = "DS210 Sp26 B1 Knowledge Checks"
+
+[output.html.playground]
+editable=true
