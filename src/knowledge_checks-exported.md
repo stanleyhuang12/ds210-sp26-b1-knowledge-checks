@@ -181,11 +181,11 @@ _Hint: You are adding them to the staging area._
 **Working with a remote repository**
 
 What is the sequence of git and shell commands to:
-- clone a repository, use the placeholder `<repository_url>`, 
+- clone a repository, use the placeholder `<repository_url>`,
 - make a topic branch called `hotfix`
-- edit a file called `main.rs` (just use the placeholder `<edit main.rs>`), 
-- then all the remaining steps to stage the changes, commit the changes, push the changes to GitHub, 
-- use the placeholder`<create a pull request, approve and merge the pull request>`, and 
+- edit a file called `main.rs` (just use the placeholder `<edit main.rs>`),
+- then all the remaining steps to stage the changes, commit the changes, push the changes to GitHub,
+- use the placeholder`<create a pull request, approve and merge the pull request>`, and
 - get the changes into the local repository's main branch
 - delete the topic branch
 
@@ -806,7 +806,7 @@ and returns a tuple of `(min, max, average)` of the values as datatype `(i32, i3
 > sum and length, so think about what you have to do there.
 
 Write a main function that tests the function by initializing and array to be
-`[37, 42, 56, 12, 9]`, passing it to the function and then printing the results, 
+`[37, 42, 56, 12, 9]`, passing it to the function and then printing the results,
 *without debug printing* -- either destructuring the tuple or indexing into the
 tuple.
 
@@ -899,7 +899,7 @@ enum Message {
 }
 ```
 
-_The main difference between this enum and the previous one is that this one has a variant with a struct-like data type, in this case `Move { x: i32, y: i32 }` 
+_The main difference between this enum and the previous one is that this one has a variant with a struct-like data type, in this case `Move { x: i32, y: i32 }`
 with the curly braces.  It works like the previous enum variant with a tuple,
 but now we can give each field a name. You would initialize it like `let msg = Message::Move { x: 4, y: -2 };`._
 
@@ -1047,7 +1047,7 @@ The hexadecimal number system is base ________.
 
 <!-- q:id=convert_to_decimal_001 type=fill_blank topic=ownership diff=1 points=2 exam=true tags=rust,syntax -->
 
-Convert the following numbers to decimal: 
+Convert the following numbers to decimal:
 
 The binary number 0b0110_0101 is equivalent to the decimal number ________.
 
