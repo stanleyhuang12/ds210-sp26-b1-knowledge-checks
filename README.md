@@ -1,7 +1,7 @@
 # DS210 Sp26 B1 Knowledge Checks
 
 As convenience, you can maintain your answers to the knowledge checks by forking
-this repository and editing the `knowledge_checks-exported.md` file.  Then, you
+this repository and editing the `knowledge_checks_part*_-exported.md` files.  Then, you
 can build the book and view your changes in your browser.
 
 ## Building the Book
@@ -39,3 +39,8 @@ mdbook serve --open
 
 This will also build the book.
 
+## Important Notes
+
+If you do the above in a VS Code terminal, you can make edits to your local copy
+of the knowledge check, and see updates to the book in your browser every time
+you save the file.
