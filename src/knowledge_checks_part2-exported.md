@@ -2,8 +2,6 @@
 
 **This page covers the material from Midterm 1 through Midterm 2.**
 
-> This page is still under construction. The questions are not yet finalized.
-
 The intent of this page is to give you practice questions like you will see on
 the midterm. You should attempt these with no notes, references or AI
 assistance, as you won't have those on the midterm.
@@ -38,6 +36,16 @@ coding + long tag = 10 points
 
 > Do you want to make a case for adding more reference material?
 > Post on Piazza and I'll consider it.
+
+<!--
+Command to convert the reference notes to LaTeX:
+
+pandoc -s generated_exams/midterm2_reference_notes.md \
+  -o generated_exams/midterm2_reference_notes.tex \
+  -V geometry:margin=1in \
+  -V fontsize=11pt \
+  --pdf-engine=xelatex
+-->
 
 ### Iterator Methods and Adapters
 
@@ -227,11 +235,12 @@ Select all statements that are true about Rust's borrowing rules:
 ```rust
 fn main() {
     let s1 = String::from("hello");
+    let s2 = String::from("ds210!");
     {
         let s2 = String::from("world");
         println!("{} {}", s1, s2);
     }
-    println!("{}", s1);
+    println!("{} {}", s1, s2);
 }
 ```
 
@@ -887,7 +896,7 @@ Hint: Use the `parse` method as in `input.parse::<u32>()` which returns a `Resul
 
 ---
 
-**Given `let maybe_name: Option<&str> = Some("Alice");`, use `if let` to print the name if it exists, or print "No name" otherwise.**
+**In a main function, declare `let maybe_name: Option<&str> = Some("Alice");` and then use `if let` to print the name if it exists, or print "No name" otherwise.**
 
 ```rust,editable
 
@@ -1192,7 +1201,7 @@ fn main() {
 
 Prerequisite: [Iterators](#iterators)
 
-**Use `.fold()` to compute the sum of squares of numbers from 1 to 5. Print the result.**
+**In a main function, use `.fold()` to compute the sum of squares of numbers from 1 to 5. Print the result.**
 
 ```rust,editable
 
