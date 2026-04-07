@@ -157,9 +157,20 @@ fn largest<T: PartialOrd>(list: &[T]) -> {
 * Anonymous function that can capture local variables within the lexical scope 
 * Enable lazy evaluation (they are not evaluated until they are called)
 * Can be used to chain with iterators and functional programming 
-
+* Predicates are closures that return a boolean value 
 
 |(x, y)| {x, y}
+
+### Iterator 
+* Ierator traits must implement a .next() method 
+* Only compute when consumed so it is a lazy evaluator 
+    - Won't calculate .next() until we actually use the iterators 
+
+* for loops will automatically convert arrays or vectors into iterator
+
+`.iter()` => iter is immutable 
+`.iter_mut()` => iter is mutable
+`.into_iter()` => converts into an iterator 
 
 ### Option Methods
 
@@ -1630,7 +1641,7 @@ fn clamp(value: i32, min: i32, max: i32) -> i32 {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use super::*; // super crates refer to everything one level up i.e., gloabl scope 
 
     // test when value is within range
 
