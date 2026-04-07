@@ -51,69 +51,69 @@ pandoc -s generated_exams/midterm2_reference_notes.md \
 
 * `next(&mut self) -> Option<Self::Item>`  Get the next element of an iterator (`None` if there isn't one)
 * `collect<B>(self) -> B` -> Transforms the iterator into a collection of type `B`
-* `take(N)` -> Take first N elements of an iterator and _turn them into an iterator_
-* `cycle()` -> Turn a finite iterator into an infinite one that repeats itself
-* `for_each(|x| ...)` -> Apply a closure to each element in the iterator
-* `filter(|x| ...)` -> _Create new iterator_ from old one for elements where closure is true
-* `map(|x| ...)` -> _Create new iterator_ by applying closure to input iterator
-* `any(|x| ...)` -> Return `true` if closure is true for any element of the iterator
-* `fold(init, |acc, x| ...)` -> Initialize accumulator to `init`, execute closure on each element
-* `reduce(|acc, x| ...)` -> Similar to fold but the initial value is the first element (returns `Option`)
-* `zip(other_iter)` -> Zip two iterators together into pairs of `(a, b)`
-* `enumerate()` -> Create iterator of `(index, element)` pairs
-* `partition(|x| ...)` -> Split iterator into two _collections_ based on predicate
-* `sum()` -> Sum all elements (works on numeric iterators)
-* `count()` -> Count the number of elements in the iterator
-* `copied()` -> Create iterator of owned copies from an iterator of references
+* `take(n: usize) -> Take<Self>` -> Take first N elements of an iterator and _turn them into an iterator_
+* `cycle() -> Cycle<Self>` -> Turn a finite iterator into an infinite one that repeats itself
+* `for_each(|x| ...) -> ()` -> Apply a closure to each element in the iterator
+* `filter(|x| ...) -> Filter<Self, P>` -> _Create new iterator_ from old one for elements where closure is true
+* `map(|x| ...) -> Map<Self, F>` -> _Create new iterator_ by applying closure to input iterator
+* `any(|x| ...) -> bool` -> Return `true` if closure is true for any element of the iterator
+* `fold(init: B, |acc, x| ...) -> B` -> Initialize accumulator to `init`, execute closure on each element
+* `reduce(|acc, x| ...) -> Option<Self::Item>` -> Similar to fold but the initial value is the first element
+* `zip(other_iter) -> Zip<Self, U>` -> Zip two iterators together into pairs of `(a, b)`
+* `enumerate() -> Enumerate<Self>` -> Create iterator of `(index, element)` pairs
+* `partition(|x| ...) -> (B, B)` -> Split iterator into two _collections_ based on predicate
+* `sum() -> S` -> Sum all elements (works on numeric iterators)
+* `count() -> usize` -> Count the number of elements in the iterator
+* `copied() -> Copied<Self>` -> Create iterator of owned copies from an iterator of references
 
 ### String and &str Methods
 
-* `s.len()` -> Number of bytes in the string
-* `s.contains("sub")` -> `true` if string contains the substring
-* `s.to_uppercase()` -> Returns a new `String` in uppercase
-* `s.to_lowercase()` -> Returns a new `String` in lowercase
-* `s.push('c')` -> Append a single character (mutates `String`)
-* `s.push_str("text")` -> Append a string slice (mutates `String`)
-* `s.chars()` -> Iterator over the characters of the string
-* `s.split_whitespace()` -> Iterator of substrings split by whitespace
-* `s.parse::<T>()` -> Parse the string into type `T`, returns `Result<T, E>`
-* `s.is_empty()` -> `true` if the string has length 0
+* `s.len() -> usize` -> Number of bytes in the string
+* `s.contains("sub") -> bool` -> `true` if string contains the substring
+* `s.to_uppercase() -> String` -> Returns a new `String` in uppercase
+* `s.to_lowercase() -> String` -> Returns a new `String` in lowercase
+* `s.push('c') -> ()` -> Append a single character (mutates `String`)
+* `s.push_str("text") -> ()` -> Append a string slice (mutates `String`)
+* `s.chars() -> Chars<'_>` -> Iterator over the characters of the string
+* `s.split_whitespace() -> SplitWhitespace<'_>` -> Iterator of substrings split by whitespace
+* `s.parse::<T>() -> Result<T, T::Err>` -> Parse the string into type `T`
+* `s.is_empty() -> bool` -> `true` if the string has length 0
 
 ### Vec Methods
 
-* `v.push(val)` -> Append element to the end
-* `v.pop()` -> Remove and return last element as `Option<T>`
-* `v.get(i)` -> Return `Option<&T>` for safe bounds-checked access
-* `v.len()` -> Number of elements
-* `v.is_empty()` -> `true` if the vector has no elements
-* `v.iter()` -> Iterator of immutable references `&T`
-* `v.iter_mut()` -> Iterator of mutable references `&mut T`
-* `v.into_iter()` -> Consuming iterator of owned values `T`
-* `v.sort_by(|a, b| ...)` -> Sort in place using a comparison closure (closure returns `Ordering`)
+* `v.push(val) -> ()` -> Append element to the end
+* `v.pop() -> Option<T>` -> Remove and return last element
+* `v.get(i: usize) -> Option<&T>` -> Safe bounds-checked access
+* `v.len() -> usize` -> Number of elements
+* `v.is_empty() -> bool` -> `true` if the vector has no elements
+* `v.iter() -> Iter<'_, T>` -> Iterator of immutable references `&T`
+* `v.iter_mut() -> IterMut<'_, T>` -> Iterator of mutable references `&mut T`
+* `v.into_iter() -> IntoIter<T>` -> Consuming iterator of owned values `T`
+* `v.sort_by(|a, b| ...) -> ()` -> Sort in place using a comparison closure (closure returns `Ordering`)
 
 ### Option Methods
 
-* `opt.unwrap()` -> Extract the value or **panic** if `None`
-* `opt.unwrap_or(default)` -> Extract the value or return `default` (eager)
-* `opt.unwrap_or_else(|| ...)` -> Extract the value or compute default via closure (lazy)
-* `opt.map(|x| ...)` -> Transform the inner value; `None` stays `None`
-* `opt.is_some()` -> `true` if `Some`
-* `opt.is_none()` -> `true` if `None`
+* `opt.unwrap() -> T` -> Extract the value or **panic** if `None`
+* `opt.unwrap_or(default: T) -> T` -> Extract the value or return `default` (eager)
+* `opt.unwrap_or_else(|| ...) -> T` -> Extract the value or compute default via closure (lazy)
+* `opt.map(|x| ...) -> Option<U>` -> Transform the inner value; `None` stays `None`
+* `opt.is_some() -> bool` -> `true` if `Some`
+* `opt.is_none() -> bool` -> `true` if `None`
 
 ### Other Useful Methods
 
-* `val.clone()` -> Create a deep copy of the value
-* `a.cmp(&b)` -> Compare two values, returns `std::cmp::Ordering`
-* `(x as f64).sqrt()` -> Square root of a floating-point number
-* `format!("...", args)` -> Like `println!` but returns a `String` instead of printing
+* `val.clone() -> T` -> Create a deep copy of the value
+* `a.cmp(&b) -> std::cmp::Ordering` -> Compare two values
+* `(x as f64).sqrt() -> f64` -> Square root of a floating-point number
+* `format!("...", args) -> String` -> Like `println!` but returns a `String` instead of printing
 * `{:?}` -> Debug format specifier (in `println!` / `format!`)
 * `{:.2}` -> Display with 2 decimal places
 
 ### Test Assertion Macros
 
-* `assert!(expr)` -> Pass if `expr` is `true`
-* `assert_eq!(a, b)` -> Pass if `a == b`; shows both values on failure
-* `assert_ne!(a, b)` -> Pass if `a != b`; shows both values on failure
+* `assert!(expr) -> ()` -> Pass if `expr` is `true`
+* `assert_eq!(a, b) -> ()` -> Pass if `a == b`; shows both values on failure
+* `assert_ne!(a, b) -> ()` -> Pass if `a != b`; shows both values on failure
 * Assert macros can take an optional custom failure message, e.g., `assert_eq!(a, b, "{} is not equal to {}", a, b)`.
 
 ## Ownership and Borrowing
@@ -135,7 +135,13 @@ fn main() {
     println!("{}", s1);
 }
 ```
+My Answer:
 
+```rust,editable
+fn main() {}
+
+
+```
 
 ---
 
