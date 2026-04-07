@@ -1,0 +1,2109 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Knowledge Checks -- Part 2}\label{knowledge-checks-part-2}
+
+\textbf{This page covers the material from Midterm 1 through Midterm 2.}
+
+The intent of this page is to give you practice questions like you will
+see on the midterm. You should attempt these with no notes, references
+or AI assistance, as you won't have those on the midterm.
+
+\begin{quote}
+Knowledge checks are updated to cover material from Midterm 1 to Midterm
+2.
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  \hyperref[ownership-and-borrowing]{Ownership and Borrowing}
+\item
+  \hyperref[strings-and-vecs]{Strings and Vecs}
+\item
+  \hyperref[slices]{Slices}
+\item
+  \hyperref[structs]{Structs}
+\item
+  \hyperref[methods]{Methods}
+\item
+  \hyperref[generics]{Generics}
+\item
+  \hyperref[option-and-result]{Option and Result}
+\item
+  \hyperref[closures]{Closures}
+\item
+  \hyperref[iterators]{Iterators}
+\item
+  \hyperref[iterators-and-closures-combined]{Iterators and Closures
+  Combined}
+\item
+  \hyperref[modules-and-crates]{Modules and Crates}
+\item
+  \hyperref[tests]{Tests}
+\end{itemize}
+
+\subsection{Reference Material (Also Provided in the
+Midterm)}\label{reference-material-also-provided-in-the-midterm}
+
+\begin{quote}
+Do you want to make a case for adding more reference material? Post on
+Piazza and I'll consider it.
+\end{quote}
+
+\subsubsection{Iterator Methods and
+Adapters}\label{iterator-methods-and-adapters}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{next(\&mut\ self)\ -\textgreater{}\ Option\textless{}Self::Item\textgreater{}}
+  Get the next element of an iterator (\texttt{None} if there isn't one)
+\item
+  \texttt{collect\textless{}B\textgreater{}(self)\ -\textgreater{}\ B}
+  -\textgreater{} Transforms the iterator into a collection of type
+  \texttt{B}
+\item
+  \texttt{take(N)} -\textgreater{} Take first N elements of an iterator
+  and \emph{turn them into an iterator}
+\item
+  \texttt{cycle()} -\textgreater{} Turn a finite iterator into an
+  infinite one that repeats itself
+\item
+  \texttt{for\_each(\textbar{}x\textbar{}\ ...)} -\textgreater{} Apply a
+  closure to each element in the iterator
+\item
+  \texttt{filter(\textbar{}x\textbar{}\ ...)} -\textgreater{}
+  \emph{Create new iterator} from old one for elements where closure is
+  true
+\item
+  \texttt{map(\textbar{}x\textbar{}\ ...)} -\textgreater{} \emph{Create
+  new iterator} by applying closure to input iterator
+\item
+  \texttt{any(\textbar{}x\textbar{}\ ...)} -\textgreater{} Return
+  \texttt{true} if closure is true for any element of the iterator
+\item
+  \texttt{fold(init,\ \textbar{}acc,\ x\textbar{}\ ...)} -\textgreater{}
+  Initialize accumulator to \texttt{init}, execute closure on each
+  element
+\item
+  \texttt{reduce(\textbar{}acc,\ x\textbar{}\ ...)} -\textgreater{}
+  Similar to fold but the initial value is the first element (returns
+  \texttt{Option})
+\item
+  \texttt{zip(other\_iter)} -\textgreater{} Zip two iterators together
+  into pairs of \texttt{(a,\ b)}
+\item
+  \texttt{enumerate()} -\textgreater{} Create iterator of
+  \texttt{(index,\ element)} pairs
+\item
+  \texttt{partition(\textbar{}x\textbar{}\ ...)} -\textgreater{} Split
+  iterator into two \emph{collections} based on predicate
+\item
+  \texttt{sum()} -\textgreater{} Sum all elements (works on numeric
+  iterators)
+\item
+  \texttt{count()} -\textgreater{} Count the number of elements in the
+  iterator
+\item
+  \texttt{copied()} -\textgreater{} Create iterator of owned copies from
+  an iterator of references
+\end{itemize}
+
+\subsubsection{String and \&str Methods}\label{string-and-str-methods}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{s.len()} -\textgreater{} Number of bytes in the string
+\item
+  \texttt{s.contains("sub")} -\textgreater{} \texttt{true} if string
+  contains the substring
+\item
+  \texttt{s.to\_uppercase()} -\textgreater{} Returns a new
+  \texttt{String} in uppercase
+\item
+  \texttt{s.to\_lowercase()} -\textgreater{} Returns a new
+  \texttt{String} in lowercase
+\item
+  \texttt{s.push(\textquotesingle{}c\textquotesingle{})} -\textgreater{}
+  Append a single character (mutates \texttt{String})
+\item
+  \texttt{s.push\_str("text")} -\textgreater{} Append a string slice
+  (mutates \texttt{String})
+\item
+  \texttt{s.chars()} -\textgreater{} Iterator over the characters of the
+  string
+\item
+  \texttt{s.split\_whitespace()} -\textgreater{} Iterator of substrings
+  split by whitespace
+\item
+  \texttt{s.parse::\textless{}T\textgreater{}()} -\textgreater{} Parse
+  the string into type \texttt{T}, returns
+  \texttt{Result\textless{}T,\ E\textgreater{}}
+\item
+  \texttt{s.is\_empty()} -\textgreater{} \texttt{true} if the string has
+  length 0
+\end{itemize}
+
+\subsubsection{Vec Methods}\label{vec-methods}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{v.push(val)} -\textgreater{} Append element to the end
+\item
+  \texttt{v.pop()} -\textgreater{} Remove and return last element as
+  \texttt{Option\textless{}T\textgreater{}}
+\item
+  \texttt{v.get(i)} -\textgreater{} Return
+  \texttt{Option\textless{}\&T\textgreater{}} for safe bounds-checked
+  access
+\item
+  \texttt{v.len()} -\textgreater{} Number of elements
+\item
+  \texttt{v.is\_empty()} -\textgreater{} \texttt{true} if the vector has
+  no elements
+\item
+  \texttt{v.iter()} -\textgreater{} Iterator of immutable references
+  \texttt{\&T}
+\item
+  \texttt{v.iter\_mut()} -\textgreater{} Iterator of mutable references
+  \texttt{\&mut\ T}
+\item
+  \texttt{v.into\_iter()} -\textgreater{} Consuming iterator of owned
+  values \texttt{T}
+\item
+  \texttt{v.sort\_by(\textbar{}a,\ b\textbar{}\ ...)} -\textgreater{}
+  Sort in place using a comparison closure (closure returns
+  \texttt{Ordering})
+\end{itemize}
+
+\subsubsection{Option Methods}\label{option-methods}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{opt.unwrap()} -\textgreater{} Extract the value or
+  \textbf{panic} if \texttt{None}
+\item
+  \texttt{opt.unwrap\_or(default)} -\textgreater{} Extract the value or
+  return \texttt{default} (eager)
+\item
+  \texttt{opt.unwrap\_or\_else(\textbar{}\textbar{}\ ...)}
+  -\textgreater{} Extract the value or compute default via closure
+  (lazy)
+\item
+  \texttt{opt.map(\textbar{}x\textbar{}\ ...)} -\textgreater{} Transform
+  the inner value; \texttt{None} stays \texttt{None}
+\item
+  \texttt{opt.is\_some()} -\textgreater{} \texttt{true} if \texttt{Some}
+\item
+  \texttt{opt.is\_none()} -\textgreater{} \texttt{true} if \texttt{None}
+\end{itemize}
+
+\subsubsection{Other Useful Methods}\label{other-useful-methods}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{val.clone()} -\textgreater{} Create a deep copy of the value
+\item
+  \texttt{a.cmp(\&b)} -\textgreater{} Compare two values, returns
+  \texttt{std::cmp::Ordering}
+\item
+  \texttt{(x\ as\ f64).sqrt()} -\textgreater{} Square root of a
+  floating-point number
+\item
+  \texttt{format!("...",\ args)} -\textgreater{} Like \texttt{println!}
+  but returns a \texttt{String} instead of printing
+\item
+  \texttt{\{:?\}} -\textgreater{} Debug format specifier (in
+  \texttt{println!} / \texttt{format!})
+\item
+  \texttt{\{:.2\}} -\textgreater{} Display with 2 decimal places
+\end{itemize}
+
+\subsubsection{Test Assertion Macros}\label{test-assertion-macros}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{assert!(expr)} -\textgreater{} Pass if \texttt{expr} is
+  \texttt{true}
+\item
+  \texttt{assert\_eq!(a,\ b)} -\textgreater{} Pass if \texttt{a\ ==\ b};
+  shows both values on failure
+\item
+  \texttt{assert\_ne!(a,\ b)} -\textgreater{} Pass if \texttt{a\ !=\ b};
+  shows both values on failure
+\item
+  Assert macros can take an optional custom failure message, e.g.,
+  \texttt{assert\_eq!(a,\ b,\ "\{\}\ is\ not\ equal\ to\ \{\}",\ a,\ b)}.
+\end{itemize}
+
+\subsection{Ownership and Borrowing}\label{ownership-and-borrowing}
+
+Prerequisite: Complete Part 1
+
+\textbf{What are the three ownership rules in Rust?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{This program has a bug and does not compile. Explain why and how
+to fix it.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fn main() \{}
+\NormalTok{    let s1 = String::from("hello");}
+\NormalTok{    let s2 = s1;}
+\NormalTok{    println!("\{\}", s1);}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Select all types that implement the \texttt{Copy} trait (i.e., are
+copied rather than moved on assignment):
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  A. \texttt{i32}
+\item[$\square$]
+  B. \texttt{String}
+\item[$\square$]
+  C. \texttt{bool}
+\item[$\square$]
+  D. \texttt{f64}
+\item[$\square$]
+  E. \texttt{Vec\textless{}i32\textgreater{}}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Fix this program so it compiles and prints both strings.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fn main() \{}
+\NormalTok{    let s1 = String::from("hello");}
+\NormalTok{    let s2 = s1;}
+\NormalTok{    println!("\{\} \{\}", s1, s2);}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the difference between an immutable reference
+(\texttt{\&T}) and a mutable reference (\texttt{\&mut\ T}) in Rust? How
+many of each can you have at the same time?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{This program has a bug and does not compile. Explain why and how
+to fix it.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fn main() \{}
+\NormalTok{    let mut s = String::from("hello");}
+\NormalTok{    let r1 = \&s;}
+\NormalTok{    s.push\_str(" world");}
+\NormalTok{    println!("\{\}", r1);}
+\NormalTok{    println!("\{\}", s);}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Write a function \texttt{first\_word\_len} that takes an
+immutable reference to a string slice and returns the length of the
+first word (characters before the first space). If there is no space,
+return the length of the entire string.}
+
+Call the function from \texttt{main} with \texttt{"hello\ world"} and
+print the result.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{This program has a bug and does not compile. Explain why and how
+to fix it.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fn take\_ownership(s: String) \{}
+\NormalTok{    println!("\{\}", s);}
+\NormalTok{\}}
+
+\NormalTok{fn main() \{}
+\NormalTok{    let s = String::from("hello");}
+\NormalTok{    take\_ownership(s);}
+\NormalTok{    println!("\{\}", s);}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Select all statements that are true about Rust's borrowing rules:
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  A. You can have multiple immutable references at the same time.
+\item[$\square$]
+  B. You can have multiple mutable references at the same time.
+\item[$\square$]
+  C. You can have one mutable reference and one immutable reference at
+  the same time.
+\item[$\square$]
+  D. A mutable reference requires the variable itself to be declared
+  \texttt{mut}.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the output of this program?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ s1 }\OperatorTok{=} \DataTypeTok{String}\PreprocessorTok{::}\NormalTok{from(}\StringTok{"hello"}\NormalTok{)}\OperatorTok{;}
+    \KeywordTok{let}\NormalTok{ s2 }\OperatorTok{=} \DataTypeTok{String}\PreprocessorTok{::}\NormalTok{from(}\StringTok{"ds210!"}\NormalTok{)}\OperatorTok{;}
+    \OperatorTok{\{}
+        \KeywordTok{let}\NormalTok{ s2 }\OperatorTok{=} \DataTypeTok{String}\PreprocessorTok{::}\NormalTok{from(}\StringTok{"world"}\NormalTok{)}\OperatorTok{;}
+        \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{\} \{\}"}\OperatorTok{,}\NormalTok{ s1}\OperatorTok{,}\NormalTok{ s2)}\OperatorTok{;}
+    \OperatorTok{\}}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{\} \{\}"}\OperatorTok{,}\NormalTok{ s1}\OperatorTok{,}\NormalTok{ s2)}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Predict the output of this program.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ append\_suffix(}\KeywordTok{mut}\NormalTok{ s}\OperatorTok{:} \DataTypeTok{String}\OperatorTok{,}\NormalTok{ suffix}\OperatorTok{:} \OperatorTok{\&}\DataTypeTok{str}\NormalTok{) }\OperatorTok{{-}\textgreater{}} \DataTypeTok{String} \OperatorTok{\{}
+\NormalTok{    s}\OperatorTok{.}\NormalTok{push\_str(suffix)}\OperatorTok{;}
+\NormalTok{    s}
+\OperatorTok{\}}
+
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ s1 }\OperatorTok{=} \DataTypeTok{String}\PreprocessorTok{::}\NormalTok{from(}\StringTok{"hello"}\NormalTok{)}\OperatorTok{;}
+    \KeywordTok{let}\NormalTok{ s2 }\OperatorTok{=}\NormalTok{ append\_suffix(s1}\OperatorTok{,} \StringTok{", world"}\NormalTok{)}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{\}"}\OperatorTok{,}\NormalTok{ s2)}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Predict the output of this program.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let} \KeywordTok{mut}\NormalTok{ v }\OperatorTok{=} \PreprocessorTok{vec!}\NormalTok{[}\DecValTok{1}\OperatorTok{,} \DecValTok{2}\OperatorTok{,} \DecValTok{3}\NormalTok{]}\OperatorTok{;}
+    \KeywordTok{let}\NormalTok{ r1 }\OperatorTok{=} \OperatorTok{\&}\NormalTok{v}\OperatorTok{;}
+    \KeywordTok{let}\NormalTok{ r2 }\OperatorTok{=} \OperatorTok{\&}\NormalTok{v}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{:?\} \{:?\}"}\OperatorTok{,}\NormalTok{ r1}\OperatorTok{,}\NormalTok{ r2)}\OperatorTok{;}
+\NormalTok{    v}\OperatorTok{.}\NormalTok{push(}\DecValTok{4}\NormalTok{)}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{:?\}"}\OperatorTok{,}\NormalTok{ v)}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+When a \texttt{String} is assigned to another variable, ownership is
+\_\_\_ . To create a deep copy of a \texttt{String}, you call the
+\texttt{\_\_\_} method.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Fix this program so it compiles. Do NOT use \texttt{.clone()}.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fn print\_length(s: String) \{}
+\NormalTok{    println!("Length: \{\}", s.len());}
+\NormalTok{\}}
+
+\NormalTok{fn main() \{}
+\NormalTok{    let s = String::from("hello");}
+\NormalTok{    print\_length(s);}
+\NormalTok{    println!("\{\}", s);}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Strings and Vecs}\label{strings-and-vecs}
+
+Prerequisite: \hyperref[ownership-and-borrowing]{Ownership and
+Borrowing}
+
+\textbf{Create a \texttt{Vec\textless{}i32\textgreater{}} containing
+{[}1, 2, 3, 4, 5{]} using the \texttt{vec!} macro. Then push the value 6
+onto it. Print the vector using debug formatting.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the difference between \texttt{v{[}2{]}} and
+\texttt{v.get(2)} when accessing elements of a \texttt{Vec}?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{This program has a bug and does not compile. Explain why and how
+to fix it.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fn main() \{}
+\NormalTok{    let mut v = vec![1, 2, 3];}
+\NormalTok{    let first = \&v[0];}
+\NormalTok{    v.push(4);}
+\NormalTok{    println!("\{\}", first);}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Write a function \texttt{sum\_vec} that takes an immutable
+reference to a \texttt{Vec\textless{}i32\textgreater{}} and returns the
+sum of all elements as \texttt{i32}.}
+
+Call it from \texttt{main} with \texttt{vec!{[}10,\ 20,\ 30{]}} and
+print the result.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the difference between \texttt{String} and
+\texttt{\&str} in Rust?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Select all statements that are true about stack and heap
+memory:}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  A. Values with a known, fixed size at compile time are stored on the
+  stack.
+\item[$\square$]
+  B. \texttt{String} data is stored entirely on the stack.
+\item[$\square$]
+  C. \texttt{Vec\textless{}T\textgreater{}} stores its elements on the
+  heap.
+\item[$\square$]
+  D. Stack allocation is generally faster than heap allocation.
+\item[$\square$]
+  E. An \texttt{i32} variable is stored on the heap.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the output of this program?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let} \KeywordTok{mut}\NormalTok{ v }\OperatorTok{=} \PreprocessorTok{vec!}\NormalTok{[}\DecValTok{10}\OperatorTok{,} \DecValTok{20}\OperatorTok{,} \DecValTok{30}\NormalTok{]}\OperatorTok{;}
+    \KeywordTok{let}\NormalTok{ last }\OperatorTok{=}\NormalTok{ v}\OperatorTok{.}\NormalTok{pop()}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{:?\}"}\OperatorTok{,}\NormalTok{ last)}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{:?\}"}\OperatorTok{,}\NormalTok{ v)}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the output of this program?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ v }\OperatorTok{=} \PreprocessorTok{vec!}\NormalTok{[}\DecValTok{10}\OperatorTok{,} \DecValTok{20}\OperatorTok{,} \DecValTok{30}\NormalTok{]}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{:?\}"}\OperatorTok{,}\NormalTok{ v}\OperatorTok{.}\NormalTok{get(}\DecValTok{1}\NormalTok{))}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{:?\}"}\OperatorTok{,}\NormalTok{ v}\OperatorTok{.}\NormalTok{get(}\DecValTok{5}\NormalTok{))}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Write a program that creates a
+\texttt{Vec\textless{}i32\textgreater{}} with values
+\texttt{{[}1,\ 2,\ 3,\ 4,\ 5{]}}, doubles every element in place, and
+prints the result.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Create a \texttt{String} with value \texttt{"Hello,\ World!"}.
+Use string methods to:} 1. Print its length 2. Check if it contains
+\texttt{"World"} 3. Convert it to uppercase and print the result
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the difference between \texttt{Vec::new()} and
+\texttt{Vec::with\_capacity(10)}? Why would you prefer one over the
+other?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Slices}\label{slices}
+
+Prerequisite: \hyperref[ownership-and-borrowing]{Ownership and
+Borrowing}
+
+\textbf{What is a slice in Rust, and how does it differ from owning the
+data?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Initialize an array to be \texttt{{[}10,\ 20,\ 30,\ 40,\ 50{]}}.
+Create a slice containing elements \texttt{{[}20,\ 30,\ 40{]}} and print
+it with debug formatting.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Given \texttt{let\ arr\ =\ {[}1,\ 2,\ 3,\ 4,\ 5{]};}:}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{\&arr{[}0..3{]}} gives \texttt{\_\_\_}.
+\item
+  \texttt{\&arr{[}2..{]}} gives \texttt{\_\_\_}.
+\item
+  \texttt{\&arr{[}..2{]}} gives \texttt{\_\_\_}.
+\item
+  \texttt{\&arr{[}..{]}} gives \texttt{\_\_\_}.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{This program has a bug and does not compile. Explain why and how
+to fix it and what the output would be once fixed.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fn main() \{}
+\NormalTok{    let mut arr = [1, 2, 3, 4, 5];}
+\NormalTok{    let slice = \&arr[1..3];}
+\NormalTok{    slice[0] = 99;}
+\NormalTok{    println!("\{:?\}", slice);}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Write a function \texttt{double\_slice} that takes a mutable
+slice \texttt{\&mut\ {[}i32{]}} and doubles every element in it.}
+
+Call it from \texttt{main} with \texttt{{[}1,\ 2,\ 3,\ 4{]}} and print
+the array after the call.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Select all statements that are true about string slices
+(\texttt{\&str}):}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  A. \texttt{\&str} can reference a string literal stored in the
+  program's read-only memory.
+\item[$\square$]
+  B. \texttt{\&str} can reference a portion of a \texttt{String} on the
+  heap.
+\item[$\square$]
+  C. \texttt{\&str} owns the string data it points to.
+\item[$\square$]
+  D. A string literal \texttt{"hello"} has type \texttt{\&str}.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Write a function
+\texttt{sum\_slice(data:\ \&{[}i32{]})\ -\textgreater{}\ i32} that
+returns the sum of all elements in a slice. Test it from \texttt{main}
+by passing a slice of indices 1, 2 and 3 of an array
+\texttt{{[}10,\ 20,\ 30,\ 40,\ 50{]}}.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Given \texttt{let\ s\ =\ String::from("Hello,\ World!");},
+create a string slice of just \texttt{"World"} and print it. Reminder:
+for this string, bytes line up with characters.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Given \texttt{let\ s\ =\ "Hello,\ 👋👋👋\ World!";}, create a
+new String \texttt{substring} that contains only the UTF-8 characters
+from positions 7 to 15. Print it.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Why is it generally preferred to accept \texttt{\&{[}T{]}} (a
+slice) rather than \texttt{\&Vec\textless{}T\textgreater{}} as a
+function parameter?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{A slice is internally represented as two values: a
+\texttt{\_\_\_} to the first element and a \texttt{\_\_\_}. Unlike a
+\texttt{Vec}, a slice does not have a capacity field.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Structs}\label{structs}
+
+Prerequisite: \hyperref[ownership-and-borrowing]{Ownership and
+Borrowing}
+
+\textbf{Define a struct \texttt{Student} with fields \texttt{name}
+(String), \texttt{age} (u32), and \texttt{gpa} (f64). In \texttt{main},
+create a \texttt{Student} and print each field.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Define a tuple struct \texttt{Color} with three \texttt{u8}
+fields (for red, green, blue). Create an instance initialized to values
+128, 111, 154, and print each component.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the output of this program?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{struct}\NormalTok{ Point }\OperatorTok{\{}
+\NormalTok{    x}\OperatorTok{:} \DataTypeTok{i32}\OperatorTok{,}
+\NormalTok{    y}\OperatorTok{:} \DataTypeTok{i32}\OperatorTok{,}
+\OperatorTok{\}}
+
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ p }\OperatorTok{=}\NormalTok{ Point }\OperatorTok{\{}\NormalTok{ x}\OperatorTok{:} \DecValTok{10}\OperatorTok{,}\NormalTok{ y}\OperatorTok{:} \DecValTok{20} \OperatorTok{\};}
+    \KeywordTok{let}\NormalTok{ Point }\OperatorTok{\{}\NormalTok{ x}\OperatorTok{,}\NormalTok{ y }\OperatorTok{\}} \OperatorTok{=}\NormalTok{ p}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"x=\{\}, y=\{\}"}\OperatorTok{,}\NormalTok{ x}\OperatorTok{,}\NormalTok{ y)}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Select all statements that are true about structs and tuple
+structs:}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  A. Named struct fields are accessed with dot notation and the field
+  name.
+\item[$\square$]
+  B. Tuple struct fields are accessed with dot notation and a numeric
+  index.
+\item[$\square$]
+  C. You can omit fields when creating a named struct instance.
+\item[$\square$]
+  D. Tuple structs provide type safety over plain tuples with the same
+  field types.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Define an enum \texttt{Shape} with variants:} - \texttt{Circle}
+with an \texttt{f64} field \texttt{radius} - \texttt{Rectangle} with an
+\texttt{f64} field \texttt{width} and an \texttt{f64} field
+\texttt{height}
+
+\textbf{Write a function
+\texttt{area(shape:\ \&Shape)\ -\textgreater{}\ f64} that returns the
+area.}
+
+\textbf{Write a main function that creates a circle with radius 5.0 and
+rectangle with width 4.0 and height 3.0, and prints the area of each.}
+
+Hint: You can access the value of \(\pi\) using
+\texttt{std::f64::consts::PI}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{This program has a bug and does not compile. Explain why and how
+to fix it.}
+
+Hint: Think about ownership rules.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\#[derive(Clone)]}
+\NormalTok{struct Book \{}
+\NormalTok{    title: String,}
+\NormalTok{    pages: u32,}
+\NormalTok{\}}
+
+\NormalTok{fn main() \{}
+\NormalTok{    let b1 = Book \{ title: String::from("Rust"), pages: 300 \};}
+\NormalTok{    let b2 = b1;}
+\NormalTok{    println!("\{\}", b1.title);}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Define a struct \texttt{Temperature} with a field
+\texttt{celsius:\ f64}. Write a function
+\texttt{to\_fahrenheit(temp:\ \&Temperature)\ -\textgreater{}\ f64} that
+converts Celsius to Fahrenheit using the formula
+\texttt{F\ =\ C\ *\ 9/5\ +\ 32}. Test it in \texttt{main}.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Methods}\label{methods}
+
+Prerequisite: \hyperref[structs]{Structs}
+
+\textbf{Implement the following code:} 1. Define a struct
+\texttt{Rectangle} with \texttt{width} and \texttt{height} (both
+\texttt{f64}). 2. Implement a constructor \texttt{new} that takes
+\texttt{width} and \texttt{height} and returns a new \texttt{Rectangle}.
+3. Implement a method \texttt{area} that returns the area. 4. Write a
+\texttt{main} that creates a rectangle, using the constructor method, of
+width 10.0 and height 5.0 and prints its area.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Explain the difference between \texttt{\&self},
+\texttt{\&mut\ self}, and \texttt{self} as method parameters.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Define a struct \texttt{Counter} with a field
+\texttt{count:\ i32}. Implement three methods:} 1. \texttt{new} --
+associated function returning a Counter with count 0 2.
+\texttt{increment} -- adds 1 to count 3. \texttt{value} -- returns the
+current count (as an \texttt{i32})
+
+\textbf{Test it in \texttt{main} by creating a counter, incrementing it
+three times, and printing the result.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{This program has a bug and does not compile. Explain why and how
+to fix it.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{struct Ticket \{}
+\NormalTok{    event: String,}
+\NormalTok{\}}
+
+\NormalTok{impl Ticket \{}
+\NormalTok{    fn redeem(self) \{}
+\NormalTok{        println!("Redeemed: \{\}", self.event);}
+\NormalTok{    \}}
+\NormalTok{\}}
+
+\NormalTok{fn main() \{}
+\NormalTok{    let t = Ticket \{ event: String::from("Concert") \};}
+\NormalTok{    t.redeem();}
+\NormalTok{    t.redeem();}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Select all statements that are true about methods and associated
+functions:
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  A. Methods take \texttt{self}, \texttt{\&self}, or
+  \texttt{\&mut\ self} as their first parameter.
+\item[$\square$]
+  B. You can have associated functions, like constructors, that do not
+  have a \texttt{self} parameter.
+\item[$\square$]
+  C. Methods are called with dot syntax: \texttt{instance.method()}.
+\item[$\square$]
+  D. Associated functions of a struct that has not been instantiated are
+  called with dot syntax: \texttt{instance.function()}.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Can you have more than one \texttt{impl} block for the same
+struct? Why might this be useful?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Define a struct \texttt{StringBuilder} with a field
+\texttt{content} of type \texttt{String}. Implement methods:} 1.
+\texttt{new()\ -\textgreater{}\ StringBuilder} -- creates an empty
+builder 2. \texttt{add(\&mut\ self,\ text:\ \&str)} -- appends text to
+content 3. \texttt{build(\&self)\ -\textgreater{}\ String} -- returns a
+clone of the content
+
+\textbf{Use it in \texttt{main} to by creating a builder, adding the
+strings ``Hello,'' and ``World!'' to it, and then building and printing
+the string.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Define a struct \texttt{BankAccount} with fields
+\texttt{owner:\ String} and \texttt{balance:\ f64}. Implement:} 1.
+\texttt{new(owner:\ \&str,\ initial:\ f64)\ -\textgreater{}\ BankAccount}
+2. \texttt{deposit(\&mut\ self,\ amount:\ f64)} -- adds amount if
+positive 3.
+\texttt{withdraw(\&mut\ self,\ amount:\ f64)\ -\textgreater{}\ bool} --
+subtracts amount if sufficient funds, returns whether successful 4.
+\texttt{display(\&self)} -- prints owner and balance
+
+\textbf{Write a \texttt{main} that creates an account owned by ``Alice''
+with an initial balance of 100.0, deposits 50.0, withdraws 30.0, printes
+whether the withdrawal was successful, and displays the account
+information.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Fill in the blanks:}
+
+A method that needs to read but not modify the struct takes
+\texttt{\_\_\_} as its first parameter. A method that needs to modify
+the struct takes \texttt{\_\_\_}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Generics}\label{generics}
+
+Prerequisite: \hyperref[methods]{Methods}
+
+\textbf{Write a generic function \texttt{largest} that takes a slice
+\texttt{\&{[}T{]}} and returns a reference to the largest element. Use
+appropriate trait bounds for the operation you expect to perform on the
+elements.}
+
+Test it from \texttt{main} with \texttt{{[}3,\ 7,\ 2,\ 9,\ 4{]}} and
+\texttt{{[}"apple",\ "banana",\ "cherry"{]}}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Define a generic struct \texttt{Pair\textless{}T\textgreater{}}
+with two fields \texttt{first} and \texttt{second} of type \texttt{T}.
+Implement a method \texttt{new} and a method \texttt{larger} that
+returns a reference to the larger value (require \texttt{PartialOrd}).}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is monomorphization, and why does Rust use it for
+generics?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Fill in the blanks:}
+
+To use \texttt{\textgreater{}} and \texttt{\textless{}} operators on a
+generic type \texttt{T}, you need the trait bound \texttt{T:\ \_\_\_}.
+
+To use \texttt{println!("\{\}",\ value)} on a generic type \texttt{T},
+you need the trait bound \texttt{T:\ \_\_\_}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{This program has a bug and does not compile. Explain why and how
+to fix it.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ print\_larger}\OperatorTok{\textless{}}\NormalTok{T}\OperatorTok{\textgreater{}}\NormalTok{(a}\OperatorTok{:}\NormalTok{ T}\OperatorTok{,}\NormalTok{ b}\OperatorTok{:}\NormalTok{ T) }\OperatorTok{\{}
+    \ControlFlowTok{if}\NormalTok{ a }\OperatorTok{\textgreater{}}\NormalTok{ b }\OperatorTok{\{}
+        \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{\}"}\OperatorTok{,}\NormalTok{ a)}\OperatorTok{;}
+    \OperatorTok{\}} \ControlFlowTok{else} \OperatorTok{\{}
+        \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{\}"}\OperatorTok{,}\NormalTok{ b)}\OperatorTok{;}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+\NormalTok{    print\_larger(}\DecValTok{10}\OperatorTok{,} \DecValTok{20}\NormalTok{)}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Define a generic struct
+\texttt{KeyValue\textless{}K,\ V\textgreater{}} with fields
+\texttt{key:\ K} and \texttt{value:\ V}. Implement a \texttt{new}
+method. Create instances with \texttt{("age",\ 25)} and
+\texttt{("scores",\ {[}90,\ 85,\ 92{]})} in \texttt{main}.}
+\textbf{Print the key and value of each instance.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Select all statements that are true about generics in Rust:}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  A. Monomorphization means the compiler generates separate code for
+  each concrete type used.
+\item[$\square$]
+  B. Generics have a runtime performance cost due to dynamic dispatch.
+\item[$\square$]
+  C. You can write specialized \texttt{impl} blocks that only apply to
+  specific concrete types.
+\item[$\square$]
+  D. Multiple trait bounds are combined with \texttt{+},
+  e.g.~\texttt{T:\ Display\ +\ PartialOrd}.
+\end{itemize}
+
+\subsection{Option and Result}\label{option-and-result}
+
+Prerequisite: \hyperref[generics]{Generics}
+
+\textbf{What is \texttt{Option\textless{}T\textgreater{}} in Rust and
+what are its two variants?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Write a function
+\texttt{safe\_divide(a:\ f64,\ b:\ f64)\ -\textgreater{}\ Option\textless{}f64\textgreater{}}
+that returns \texttt{None} if \texttt{b} is 0, otherwise returns
+\texttt{Some(a\ /\ b)}. In \texttt{main}, call it and use \texttt{match}
+to print the result or an error message.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the output of this program?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ a}\OperatorTok{:} \DataTypeTok{Option}\OperatorTok{\textless{}}\DataTypeTok{i32}\OperatorTok{\textgreater{}} \OperatorTok{=} \ConstantTok{Some}\NormalTok{(}\DecValTok{42}\NormalTok{)}\OperatorTok{;}
+    \KeywordTok{let}\NormalTok{ b}\OperatorTok{:} \DataTypeTok{Option}\OperatorTok{\textless{}}\DataTypeTok{i32}\OperatorTok{\textgreater{}} \OperatorTok{=} \ConstantTok{None}\OperatorTok{;}
+
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{\}"}\OperatorTok{,}\NormalTok{ a}\OperatorTok{.}\NormalTok{unwrap\_or(}\DecValTok{0}\NormalTok{))}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{\}"}\OperatorTok{,}\NormalTok{ b}\OperatorTok{.}\NormalTok{unwrap\_or(}\DecValTok{0}\NormalTok{))}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is \texttt{Result\textless{}T,\ E\textgreater{}} in Rust
+and how does it differ from \texttt{Option\textless{}T\textgreater{}}?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Write a function
+\texttt{parse\_age(input:\ \&str)\ -\textgreater{}\ Result\textless{}u32,\ String\textgreater{}}
+that parses a string to a \texttt{u32}. Return \texttt{Err} with a
+message if the string is not a valid number or if the number is greater
+than 150. Call \texttt{parse\_age} from \texttt{main} with the strings
+``25'', ``200'', and ``abc'' to print the result.}
+
+Hint: Use the \texttt{parse} method as in
+\texttt{input.parse::\textless{}u32\textgreater{}()} which returns a
+\texttt{Result\textless{}u32,\ ParseIntError\textgreater{}}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Select all statements that are true about \texttt{Option} and
+\texttt{Result}:}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  A. Calling \texttt{.unwrap()} on \texttt{None} will cause a panic at
+  runtime.
+\item[$\square$]
+  B. \texttt{.unwrap\_or(default)} evaluates the default eagerly (even
+  if the value is \texttt{Some}).
+\item[$\square$]
+  C. \texttt{.unwrap\_or\_else(\textbar{}\textbar{}\ expr)} evaluates
+  the closure lazily (only if the value is \texttt{None}).
+\item[$\square$]
+  D. \texttt{Option\textless{}T\textgreater{}} and
+  \texttt{Result\textless{}T,\ E\textgreater{}} are special compiler
+  primitives, not regular enums.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{In a main function, declare
+\texttt{let\ maybe\_name:\ Option\textless{}\&str\textgreater{}\ =\ Some("Alice");}
+and then use \texttt{if\ let} to print the name if it exists, or print
+``No name'' otherwise.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the output of this program?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ some\_num}\OperatorTok{:} \DataTypeTok{Option}\OperatorTok{\textless{}}\DataTypeTok{i32}\OperatorTok{\textgreater{}} \OperatorTok{=} \ConstantTok{Some}\NormalTok{(}\DecValTok{5}\NormalTok{)}\OperatorTok{;}
+    \KeywordTok{let}\NormalTok{ none\_num}\OperatorTok{:} \DataTypeTok{Option}\OperatorTok{\textless{}}\DataTypeTok{i32}\OperatorTok{\textgreater{}} \OperatorTok{=} \ConstantTok{None}\OperatorTok{;}
+
+    \KeywordTok{let}\NormalTok{ doubled }\OperatorTok{=}\NormalTok{ some\_num}\OperatorTok{.}\NormalTok{map(}\OperatorTok{|}\NormalTok{x}\OperatorTok{|}\NormalTok{ x }\OperatorTok{*} \DecValTok{2}\NormalTok{)}\OperatorTok{;}
+    \KeywordTok{let}\NormalTok{ doubled\_none }\OperatorTok{=}\NormalTok{ none\_num}\OperatorTok{.}\NormalTok{map(}\OperatorTok{|}\NormalTok{x}\OperatorTok{|}\NormalTok{ x }\OperatorTok{*} \DecValTok{2}\NormalTok{)}\OperatorTok{;}
+
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{:?\}"}\OperatorTok{,}\NormalTok{ doubled)}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{:?\}"}\OperatorTok{,}\NormalTok{ doubled\_none)}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the output of this program?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ results }\OperatorTok{=} \PreprocessorTok{vec!}\NormalTok{[}\StringTok{"42"}\OperatorTok{,} \StringTok{"not\_a\_number"}\OperatorTok{,} \StringTok{"7"}\NormalTok{]}\OperatorTok{;}
+    \ControlFlowTok{for}\NormalTok{ s }\KeywordTok{in}\NormalTok{ results }\OperatorTok{\{}
+        \ControlFlowTok{match}\NormalTok{ s}\OperatorTok{.}\PreprocessorTok{parse::}\OperatorTok{\textless{}}\DataTypeTok{i32}\OperatorTok{\textgreater{}}\NormalTok{() }\OperatorTok{\{}
+            \ConstantTok{Ok}\NormalTok{(n) }\OperatorTok{=\textgreater{}} \PreprocessorTok{println!}\NormalTok{(}\StringTok{"Parsed: \{\}"}\OperatorTok{,}\NormalTok{ n)}\OperatorTok{,}
+            \ConstantTok{Err}\NormalTok{(e) }\OperatorTok{=\textgreater{}} \PreprocessorTok{println!}\NormalTok{(}\StringTok{"Error: \{\}"}\OperatorTok{,}\NormalTok{ e)}\OperatorTok{,}
+        \OperatorTok{\}}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Write a function
+\texttt{find\_first\_even(numbers:\ \&{[}i32{]})\ -\textgreater{}\ Option\textless{}i32\textgreater{}}
+that returns the first even number in a slice, or \texttt{None} if there
+are no even numbers. Test it with \texttt{{[}1,\ 3,\ 4,\ 5,\ 6{]}} and
+\texttt{{[}1,\ 3,\ 5{]}}.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Write a function
+\texttt{average(numbers:\ \&{[}f64{]})\ -\textgreater{}\ Result\textless{}f64,\ String\textgreater{}}
+that returns the average of the slice. Return an \texttt{Err} if the
+slice is empty. Write \texttt{main} demonstrating both the success and
+error cases using \texttt{match}.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Closures}\label{closures}
+
+Prerequisite: \hyperref[option-and-result]{Option and Result}
+
+\textbf{What is a closure in Rust, and how does its syntax differ from a
+regular function?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the output of this program?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ factor }\OperatorTok{=} \DecValTok{3}\OperatorTok{;}
+    \KeywordTok{let}\NormalTok{ multiply }\OperatorTok{=} \OperatorTok{|}\NormalTok{x}\OperatorTok{|}\NormalTok{ x }\OperatorTok{*}\NormalTok{ factor}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{\}"}\OperatorTok{,}\NormalTok{ multiply(}\DecValTok{5}\NormalTok{))}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{\}"}\OperatorTok{,}\NormalTok{ multiply(}\DecValTok{10}\NormalTok{))}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{This program has a bug and does not compile. Explain why and how
+to fix it.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ identity }\OperatorTok{=} \OperatorTok{|}\NormalTok{x}\OperatorTok{|}\NormalTok{ x}\OperatorTok{;}
+    \KeywordTok{let}\NormalTok{ s }\OperatorTok{=}\NormalTok{ identity(}\StringTok{"hello"}\NormalTok{)}\OperatorTok{;}
+    \KeywordTok{let}\NormalTok{ n }\OperatorTok{=}\NormalTok{ identity(}\DecValTok{42}\NormalTok{)}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Write a closure that captures a mutable variable \texttt{count}
+and increments it each time it is called. Call it three times and print
+the final count.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the difference between \texttt{.unwrap\_or(default)} and
+\texttt{.unwrap\_or\_else(\textbar{}\textbar{}\ expr)} in terms of
+evaluation?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Select all statements that are true about closures vs regular
+functions:}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  A. Closures can capture variables from their enclosing scope.
+\item[$\square$]
+  B. Regular functions can capture variables from their enclosing scope.
+\item[$\square$]
+  C. Closures always require type annotations on their parameters.
+\item[$\square$]
+  D. Closure parameter/return types are inferred from the first use and
+  then fixed.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Write a function \texttt{apply\_twice} that takes an
+\texttt{i32} value and a closure that maps
+\texttt{i32\ -\textgreater{}\ i32}, and returns the result of applying
+the closure twice. Test it by calling it from \texttt{main} with a
+closure that doubles a number (e.g., 3 becomes 6), and then calling
+\texttt{apply\_twice} with that closure and the number 3 (so 3 becomes
+12).}
+
+Hint: Use the \texttt{Fn} trait bound to specify the closure type as in
+\texttt{Fn(i32)\ -\textgreater{}\ i32}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Create a vector of strings
+\texttt{{[}"banana",\ "apple",\ "cherry"{]}} and sort it by string
+length (shortest first) using a closure with \texttt{.sort\_by}. Print
+the result.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What does the \texttt{move} keyword do when placed before a
+closure? When is it needed?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Iterators}\label{iterators}
+
+Prerequisite: \hyperref[closures]{Closures}
+
+\textbf{What method does the \texttt{Iterator} trait require you to
+implement, and what does it return?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What are the outputs of Programs 1 and 2?}
+
+Hint: They are not the same.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{// Program 1}
+\NormalTok{fn main() \{}
+\NormalTok{    let v = vec![1, 2, 3, 4, 5];}
+\NormalTok{    let \_mapped = v.iter().map(|x| \{}
+\NormalTok{        println!("processing \{\}", x);}
+\NormalTok{        x * 2}
+\NormalTok{    \});}
+\NormalTok{    println!("done");}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{// Program 2}
+\NormalTok{fn main() \{}
+\NormalTok{    let v = vec![1, 2, 3, 4, 5];}
+\NormalTok{    let double\_v: Vec\textless{}\_\textgreater{} = v.iter().map(|x| \{}
+\NormalTok{        println!("processing \{\}", x);}
+\NormalTok{        x * 2}
+\NormalTok{    \}).collect();}
+\NormalTok{    println!("done");}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Using iterator methods, take a
+\texttt{Vec\textless{}i32\textgreater{}} of
+\texttt{{[}1,\ 2,\ 3,\ 4,\ 5,\ 6,\ 7,\ 8,\ 9,\ 10{]}}, filter to keep
+only even numbers, square each one, and collect into a
+\texttt{Vec\textless{}i32\textgreater{}}. Print the result.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Select all statements that are true about ranges as iterators:}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  A. \texttt{1..5} produces values 1, 2, 3, 4.
+\item[$\square$]
+  B. \texttt{1..=5} produces values 1, 2, 3, 4, 5.
+\item[$\square$]
+  C. \texttt{1.0..5.0} is a valid iterator over floating-point numbers.
+\item[$\square$]
+  D.
+  \texttt{\textquotesingle{}a\textquotesingle{}..\textquotesingle{}z\textquotesingle{}}
+  is a valid range over characters.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Implement a custom iterator \texttt{Countdown} that counts down
+from a given starting number to 1.}
+
+Define the struct and implement the \texttt{Iterator} trait for it. In
+\texttt{main}, create a \texttt{Countdown} starting from 5 and use a
+\texttt{for} loop to print each value.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Select all statements that are true about iterator adapters and
+consumers:}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  A. \texttt{.map()} and \texttt{.filter()} are adapters that return new
+  iterators.
+\item[$\square$]
+  B. \texttt{.collect()} and \texttt{.fold()} are consumers that produce
+  a final value.
+\item[$\square$]
+  C. Adapters execute eagerly as soon as they are called.
+\item[$\square$]
+  D. You must consume an iterator (e.g., with \texttt{.collect()}) for
+  adapters to execute.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the output of this program?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ v }\OperatorTok{=} \PreprocessorTok{vec!}\NormalTok{[}\DecValTok{10}\OperatorTok{,} \DecValTok{20}\OperatorTok{,} \DecValTok{30}\NormalTok{]}\OperatorTok{;}
+    \KeywordTok{let} \KeywordTok{mut}\NormalTok{ iter }\OperatorTok{=}\NormalTok{ v}\OperatorTok{.}\NormalTok{iter()}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{:?\}"}\OperatorTok{,}\NormalTok{ iter}\OperatorTok{.}\NormalTok{next())}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{:?\}"}\OperatorTok{,}\NormalTok{ iter}\OperatorTok{.}\NormalTok{next())}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{:?\}"}\OperatorTok{,}\NormalTok{ iter}\OperatorTok{.}\NormalTok{next())}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{:?\}"}\OperatorTok{,}\NormalTok{ iter}\OperatorTok{.}\NormalTok{next())}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the output of this program?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ first\_five}\OperatorTok{:} \DataTypeTok{Vec}\OperatorTok{\textless{}}\DataTypeTok{i32}\OperatorTok{\textgreater{}} \OperatorTok{=}\NormalTok{ (}\DecValTok{1}\OperatorTok{..}\NormalTok{)}\OperatorTok{.}\NormalTok{filter(}\OperatorTok{|}\NormalTok{x}\OperatorTok{|}\NormalTok{ x }\OperatorTok{\%} \DecValTok{3} \OperatorTok{==} \DecValTok{0}\NormalTok{)}\OperatorTok{.}\NormalTok{take(}\DecValTok{5}\NormalTok{)}\OperatorTok{.}\NormalTok{collect()}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{:?\}"}\OperatorTok{,}\NormalTok{ first\_five)}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Use \texttt{.enumerate()} to print each element of
+\texttt{{[}"a",\ "b",\ "c"{]}} with its index, like:}
+
+\begin{verbatim}
+0: a
+1: b
+2: c
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the difference between \texttt{.iter()},
+\texttt{.iter\_mut()}, and \texttt{.into\_iter()} on a
+\texttt{Vec\textless{}T\textgreater{}}?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Use a range and \texttt{.collect()} to create a
+\texttt{Vec\textless{}u32\textgreater{}} containing
+\texttt{{[}1,\ 2,\ 3,\ 4,\ 5{]}}. Then use \texttt{.collect()} again to
+create a \texttt{String} from the characters
+\texttt{{[}\textquotesingle{}H\textquotesingle{},\ \textquotesingle{}i\textquotesingle{},\ \textquotesingle{}!\textquotesingle{}{]}}.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Iterators and Closures
+Combined}\label{iterators-and-closures-combined}
+
+Prerequisite: \hyperref[iterators]{Iterators}
+
+\textbf{In a main function, use \texttt{.fold()} to compute the sum of
+squares of numbers from 1 to 5. Print the result.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the difference between \texttt{.fold()} and
+\texttt{.reduce()} on an iterator?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the output of this program?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ has\_negative }\OperatorTok{=}\NormalTok{ [}\DecValTok{3}\OperatorTok{,} \OperatorTok{{-}}\DecValTok{1}\OperatorTok{,} \DecValTok{4}\OperatorTok{,} \DecValTok{1}\OperatorTok{,} \DecValTok{5}\NormalTok{]}\OperatorTok{.}\NormalTok{iter()}\OperatorTok{.}\NormalTok{any(}\OperatorTok{|}\NormalTok{x}\OperatorTok{|} \OperatorTok{*}\NormalTok{x }\OperatorTok{\textless{}} \DecValTok{0}\NormalTok{)}\OperatorTok{;}
+    \KeywordTok{let}\NormalTok{ all\_positive }\OperatorTok{=}\NormalTok{ [}\DecValTok{3}\OperatorTok{,} \DecValTok{1}\OperatorTok{,} \DecValTok{4}\OperatorTok{,} \DecValTok{1}\OperatorTok{,} \DecValTok{5}\NormalTok{]}\OperatorTok{.}\NormalTok{iter()}\OperatorTok{.}\NormalTok{any(}\OperatorTok{|}\NormalTok{x}\OperatorTok{|} \OperatorTok{*}\NormalTok{x }\OperatorTok{\textless{}} \DecValTok{0}\NormalTok{)}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{\}"}\OperatorTok{,}\NormalTok{ has\_negative)}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{\}"}\OperatorTok{,}\NormalTok{ all\_positive)}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Given two vectors \texttt{v1\ =\ vec!{[}1.0,\ 2.0,\ 3.0{]}} and
+\texttt{v2\ =\ vec!{[}4.0,\ 5.0,\ 6.0{]}}, use \texttt{.zip()},
+\texttt{.map()}, and \texttt{.sum()} to compute their dot product (sum
+of element-wise products). Print the result.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Write a function
+\texttt{is\_prime(n:\ u32)\ -\textgreater{}\ bool} using the
+\texttt{.any()} iterator method. A number is prime if it is greater than
+1 and no number from 2 to its square root divides it evenly.}
+
+Test it in \texttt{main} by printing whether 7, 10, and 13 are prime.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the output of this program?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ result}\OperatorTok{:} \DataTypeTok{Vec}\OperatorTok{\textless{}}\DataTypeTok{String}\OperatorTok{\textgreater{}} \OperatorTok{=}\NormalTok{ (}\DecValTok{1}\OperatorTok{..=}\DecValTok{5}\NormalTok{)}
+        \OperatorTok{.}\NormalTok{filter(}\OperatorTok{|}\NormalTok{x}\OperatorTok{|}\NormalTok{ x }\OperatorTok{\%} \DecValTok{2} \OperatorTok{==} \DecValTok{1}\NormalTok{)}
+        \OperatorTok{.}\NormalTok{map(}\OperatorTok{|}\NormalTok{x}\OperatorTok{|} \PreprocessorTok{format!}\NormalTok{(}\StringTok{"\#\{\}"}\OperatorTok{,}\NormalTok{ x))}
+        \OperatorTok{.}\NormalTok{collect()}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{:?\}"}\OperatorTok{,}\NormalTok{ result)}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the output of this program?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ max }\OperatorTok{=} \PreprocessorTok{vec!}\NormalTok{[}\DecValTok{3}\OperatorTok{,} \DecValTok{7}\OperatorTok{,} \DecValTok{2}\OperatorTok{,} \DecValTok{9}\OperatorTok{,} \DecValTok{4}\NormalTok{]}
+        \OperatorTok{.}\NormalTok{into\_iter()}
+        \OperatorTok{.}\NormalTok{reduce(}\OperatorTok{|}\NormalTok{a}\OperatorTok{,}\NormalTok{ b}\OperatorTok{|} \ControlFlowTok{if}\NormalTok{ a }\OperatorTok{\textgreater{}}\NormalTok{ b }\OperatorTok{\{}\NormalTok{ a }\OperatorTok{\}} \ControlFlowTok{else} \OperatorTok{\{}\NormalTok{ b }\OperatorTok{\}}\NormalTok{)}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{:?\}"}\OperatorTok{,}\NormalTok{ max)}\OperatorTok{;}
+
+    \KeywordTok{let}\NormalTok{ empty}\OperatorTok{:} \DataTypeTok{Vec}\OperatorTok{\textless{}}\DataTypeTok{i32}\OperatorTok{\textgreater{}} \OperatorTok{=} \PreprocessorTok{vec!}\NormalTok{[]}\OperatorTok{;}
+    \KeywordTok{let}\NormalTok{ result }\OperatorTok{=}\NormalTok{ empty}\OperatorTok{.}\NormalTok{into\_iter()}\OperatorTok{.}\NormalTok{reduce(}\OperatorTok{|}\NormalTok{a}\OperatorTok{,}\NormalTok{ b}\OperatorTok{|}\NormalTok{ a }\OperatorTok{+}\NormalTok{ b)}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{:?\}"}\OperatorTok{,}\NormalTok{ result)}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Use \texttt{.for\_each()} to print each number from 1 to 5, each
+on its own line.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Write a program that takes a string
+\texttt{"the\ quick\ brown\ fox\ jumps\ over\ the\ lazy\ dog"} and uses
+iterator methods to count the number of words that have more than 3
+characters. Print the count.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What is the output of this program?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fn}\NormalTok{ main() }\OperatorTok{\{}
+    \KeywordTok{let}\NormalTok{ sum}\OperatorTok{:} \DataTypeTok{i32} \OperatorTok{=}\NormalTok{ (}\DecValTok{1}\OperatorTok{..=}\DecValTok{10}\NormalTok{)}
+        \OperatorTok{.}\NormalTok{filter(}\OperatorTok{|}\NormalTok{x}\OperatorTok{|}\NormalTok{ x }\OperatorTok{\%} \DecValTok{3} \OperatorTok{==} \DecValTok{0}\NormalTok{)}
+        \OperatorTok{.}\NormalTok{map(}\OperatorTok{|}\NormalTok{x}\OperatorTok{|}\NormalTok{ x }\OperatorTok{*}\NormalTok{ x)}
+        \OperatorTok{.}\NormalTok{sum()}\OperatorTok{;}
+    \PreprocessorTok{println!}\NormalTok{(}\StringTok{"\{\}"}\OperatorTok{,}\NormalTok{ sum)}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Use \texttt{.partition()} to split the numbers 1 through 10 into
+two vectors: one with even numbers, one with odd numbers. Print both.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Modules and Crates}\label{modules-and-crates}
+
+Prerequisite: None
+
+\textbf{In Rust, are items inside a module public or private by default?
+How do you make an item public?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{This program has a bug and does not compile. Explain why and how
+to fix it.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod math \{}
+\NormalTok{    fn add(a: i32, b: i32) {-}\textgreater{} i32 \{}
+\NormalTok{        a + b}
+\NormalTok{    \}}
+\NormalTok{\}}
+
+\NormalTok{fn main() \{}
+\NormalTok{    println!("\{\}", math::add(3, 4));}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Create a nested module structure: \texttt{shapes::circle} with a
+public function \texttt{area(radius:\ f64)\ -\textgreater{}\ f64}. Call
+it from \texttt{main} using the full path and also with a \texttt{use}
+statement so you can call \texttt{circle::area(5.0)} instead of the full
+path.}
+
+Hint: Use the \texttt{std::f64::consts::PI} constant.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{This program has a bug and does not compile. Explain why and how
+to fix it.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mod account \{}
+\NormalTok{    pub struct BankAccount \{}
+\NormalTok{        pub owner: String,}
+\NormalTok{        balance: f64,}
+\NormalTok{    \}}
+\NormalTok{\}}
+
+\NormalTok{fn main() \{}
+\NormalTok{    let acct = account::BankAccount \{}
+\NormalTok{        owner: String::from("Alice"),}
+\NormalTok{        balance: 100.0,}
+\NormalTok{    \};}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Select all statements that are true about crates in Rust:}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  A. A binary crate compiles to an executable and has a \texttt{main()}
+  function.
+\item[$\square$]
+  B. A library crate compiles to reusable code and does not have a
+  \texttt{main()} function.
+\item[$\square$]
+  C. External crates are added as dependencies in \texttt{Cargo.toml}.
+\item[$\square$]
+  D. A package can contain at most one binary crate.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Fill in the blanks:}
+
+To refer to the parent module from within a nested module, use the
+keyword \texttt{\_\_\_}.
+
+To refer to the crate root in an absolute path, use the keyword
+\texttt{\_\_\_}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Given a module with several public functions, use a single
+\texttt{use} statement with curly braces to import multiple items. Write
+a module \texttt{math} with \texttt{pub\ fn\ add},
+\texttt{pub\ fn\ subtract}, and \texttt{pub\ fn\ multiply}, then import
+all three with one \texttt{use} statement and call each function from
+\texttt{main}.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Predict the output of this program.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fn greet() {-}\textgreater{} \&\textquotesingle{}static str \{}
+\NormalTok{    "hello from root"}
+\NormalTok{\}}
+
+\NormalTok{mod inner \{}
+\NormalTok{    pub fn call\_parent() {-}\textgreater{} \&\textquotesingle{}static str \{}
+\NormalTok{        super::greet()}
+\NormalTok{    \}}
+\NormalTok{    fn greet() {-}\textgreater{} \&\textquotesingle{}static str \{}
+\NormalTok{        "hello from inner"}
+\NormalTok{    \}}
+\NormalTok{\}}
+
+\NormalTok{fn main() \{}
+\NormalTok{    println!("\{\}", inner::call\_parent());}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Create a module \texttt{geometry} with a struct \texttt{Circle}
+where its field \texttt{radius} is private. Provide:} 1. A public
+constructor \texttt{new(radius:\ f64)\ -\textgreater{}\ Circle} 2. A
+public method \texttt{area(\&self)\ -\textgreater{}\ f64}
+
+\textbf{Create a \texttt{main} function that creates a \texttt{Circle}
+with radius 5.0, prints the area.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{How do you add an external crate (e.g., \texttt{rand}) as a
+dependency to your Rust project? Name two ways.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Fill in the blanks:}
+
+In semantic versioning (major.minor.patch), a \texttt{\_\_\_} version
+change indicates new backwards-compatible features. A \texttt{\_\_\_}
+version change indicates backwards-compatible bug fixes. A
+\texttt{\_\_\_} version change indicates backwards-incompatible changes.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Predict the output of this program.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fn secret() {-}\textgreater{} \&\textquotesingle{}static str \{}
+\NormalTok{    "found me in root"}
+\NormalTok{\}}
+
+\NormalTok{mod outer \{}
+\NormalTok{    mod inner \{}
+\NormalTok{        pub fn secret() {-}\textgreater{} \&\textquotesingle{}static str \{}
+\NormalTok{            "found me in inner"}
+\NormalTok{        \}}
+\NormalTok{    \}}
+
+\NormalTok{    pub fn reveal() {-}\textgreater{} \&\textquotesingle{}static str \{}
+\NormalTok{        inner::secret()}
+\NormalTok{    \}}
+
+\NormalTok{    fn secret() {-}\textgreater{} \&\textquotesingle{}static str \{}
+\NormalTok{        "found me in outer"}
+\NormalTok{    \}}
+\NormalTok{\}}
+
+\NormalTok{fn main() \{}
+\NormalTok{    println!("\{\}", outer::reveal());}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{Tests}\label{tests}
+
+Prerequisite: \hyperref[modules-and-crates]{Modules and Crates}
+
+\textbf{What attribute do you place above a function to mark it as a
+test function in Rust? How do you run tests?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Write a function
+\texttt{is\_even(n:\ i32)\ -\textgreater{}\ bool} and a test module with
+tests for even and odd numbers using \texttt{assert!} and
+\texttt{assert\_eq!}.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Select all statements that are true about test assertion
+macros:}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  A. \texttt{assert!(expr)} passes if \texttt{expr} evaluates to
+  \texttt{true}.
+\item[$\square$]
+  B. \texttt{assert\_eq!(a,\ b)} passes if \texttt{a\ ==\ b}.
+\item[$\square$]
+  C. \texttt{assert\_ne!(a,\ b)} passes if \texttt{a\ ==\ b}.
+\item[$\square$]
+  D. All assertion macros can take an optional custom failure message.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Write a function
+\texttt{clamp(value:\ i32,\ min:\ i32,\ max:\ i32)\ -\textgreater{}\ i32}
+that returns:} - \texttt{min} if \texttt{value\ \textless{}\ min} -
+\texttt{max} if \texttt{value\ \textgreater{}\ max} - \texttt{value}
+otherwise
+
+\textbf{Write a comprehensive test module covering normal case, when
+value is below min or above max and when min equals max.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fn clamp(value: i32, min: i32, max: i32) {-}\textgreater{} i32 \{}
+\NormalTok{    // implement this}
+
+\NormalTok{\}}
+
+\NormalTok{\#[cfg(test)]}
+\NormalTok{mod tests \{}
+\NormalTok{    use super::*;}
+
+\NormalTok{    // test when value is within range}
+
+\NormalTok{    // test when value is below min}
+
+\NormalTok{    // test when value is above max}
+
+\NormalTok{    // test when min equals max}
+
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{What are documentation tests in Rust? How does
+\texttt{cargo\ test} handle them?}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Select all statements that are true about organizing tests in
+Rust:}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  A. Unit tests typically live in the same file as the code they test.
+\item[$\square$]
+  B. The \texttt{\#{[}cfg(test){]}} attribute ensures test code is only
+  compiled during \texttt{cargo\ test}.
+\item[$\square$]
+  C. \texttt{use\ super::*;} inside a test module imports all items from
+  the parent module.
+\item[$\square$]
+  D. Tests must always be in a separate \texttt{tests/} directory.
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Write a function
+\texttt{remove\_negatives(v:\ \&{[}i32{]})\ -\textgreater{}\ Vec\textless{}i32\textgreater{}}
+that returns a new vector with only the non-negative numbers. Write at
+least three tests: empty input, all negative input, and mixed input.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\end{document}
