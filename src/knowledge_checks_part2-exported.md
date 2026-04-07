@@ -90,6 +90,76 @@ pandoc -s generated_exams/midterm2_reference_notes.md \
 * `v.iter_mut()` -> Iterator of mutable references `&mut T`
 * `v.into_iter()` -> Consuming iterator of owned values `T`
 * `v.sort_by(|a, b| ...)` -> Sort in place using a comparison closure (closure returns `Ordering`)
+* `v.sort()` -> Performs an in-place modification by sorting the value 
+
+### Struct 
+
+* Regular structs 
+* struct Person { name: String, age: u32 }
+
+* Tuple struct 
+* struct Point3D(f64, f64, f64)
+
+* use `.` to access the field in regular struct or the index of the tuple in the tuple struct 
+
+```rust, editable
+struct Square {
+    length: f64,
+    color: String
+}
+
+impl Square {
+    fn new(length: f64, color: String) -> Square {
+        Square { length, color }
+    }
+
+    fn area(&self) -> f64 {
+        self.length * self.length
+    }
+
+    fn change_color(&mut self, new_color:String) -> bool {
+        self.color = new_color; 
+        true
+    }
+}
+```
+
+
+### Generation 
+* <T>, <T, U> are generics that allows you to reuse codes for different types
+* You can constrain them to only allow some generic. You do this by augmenting the generic with a trait. 
+
+* Monomorphization: compiler generate new fn with specialized versions; makes compile time more complex but runtime more simpler 
+
+fn new<T>(x: T) { // allows for generic type as input parameters 
+}
+
+fn new<T: Trait1 + Trait2 + Trait3>(x: T) // augmenting a function with traits and you can add many traits such as (e.g., Display, Clone, PartialEq, PartialOrd)
+
+```rust
+
+fn largest<T: PartialOrd>(list: &[T]) -> {
+    let mut largest = &list[0]
+    for item in list {
+        if item > largest {
+            largest = item; 
+        }
+    }
+    largest // returns a reference 
+}
+
+// We use partial ordering so that f64, f32, f128, u32, u64, u128 all can work, usize; 
+
+// if we do order then only a certain type of value can be included
+```
+
+### Closures 
+* Anonymous function that can capture local variables within the lexical scope 
+* Enable lazy evaluation (they are not evaluated until they are called)
+* Can be used to chain with iterators and functional programming 
+
+
+|(x, y)| {x, y}
 
 ### Option Methods
 
@@ -306,22 +376,32 @@ fn main() {
 
 ## Strings and Vecs
 
+Strings and vecs employ shallow copies where they reference the underlying data on the heap.
+- Each value has one owner
+- When owner is out of scope, value is dropped
+- Ownership can be moved (where previous owner is invalid)
+- Different ways to borrow the data with &mut x (borrow mutably can only do once but no immuable borrow is allowed either), &x (borrow immutably: multiple times is fine)
+- There are cases when you need to dereference (some automatically dereferences)
+
 Prerequisite: [Ownership and Borrowing](#ownership-and-borrowing)
 
 **Create a `Vec<i32>` containing [1, 2, 3, 4, 5] using the `vec!` macro. Then push the value 6 onto it. Print the vector using debug formatting.**
 
 ```rust,editable
-
+fn main() {
+    let mut vector: Vec<i32> = vec![1, 2, 3, 4, 5]; 
+    vector.push(6); 
+    println!(vector); 
+}
 
 ```
-
 
 ---
 
 **What is the difference between `v[2]` and `v.get(2)` when accessing elements of a `Vec`?**
 <br><br>
 
-
+v.get() gets the value at a particular index and returns the value wrapped in an Option enum. If it is out of bounds then it will return a None. It won't create a runtime error. Whereas v[2] can create a runtime error.
 ---
 
 **This program has a bug and does not compile. Explain why and how to fix it.**
