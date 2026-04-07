@@ -39,8 +39,35 @@ mdbook serve --open
 
 This will also build the book.
 
+## Generating LaTeX from Markdown
+
+Use `md2tex.sh` to convert a knowledge-check Markdown file into a `.tex` file in
+`./pdfs/`.
+
+The script takes an optional source file path:
+
+```bash
+./md2tex.sh
+```
+
+By default, this uses:
+
+```text
+./src/knowledge_checks_part2-exported.md
+```
+
+You can also provide a different source file:
+
+```bash
+./md2tex.sh ./src/knowledge_checks_part1-exported.md
+```
+
+The output filename is derived automatically from the source filename and written
+to `./pdfs/<source-basename>.tex`.
+
+After generating the `.tex` file, you can compile it to PDF using your LaTeX tools
+in VSCode (for example, LaTeX Workshop) or upload it to Overleaf and build there.
+
 ## Important Notes
 
-If you do the above in a VS Code terminal, you can make edits to your local copy
-of the knowledge check, and see updates to the book in your browser every time
-you save the file.
+If you build the mdbook as described above in a VS Code terminal, you can make edits to your local copy of the knowledge check, and see updates to the book in your browser every time you save the file.
