@@ -99,3 +99,45 @@ fn main() {
 }
 
 ```
+
+
+## Tests, crates, and modules
+
+```rust
+// your code here
+fn max_of_three(tup: (i32, i32, i32)) -> i32 {
+    let (val1:i32, val2:i32, val3: i32) = tup;  //destructure the tuple 
+    let mut largest_val = i32::MIN; 
+    if val1 > largest_val {
+        largest_val = val1; 
+    }
+    if val2 > largest_val {
+        largest_val = val2; 
+    }
+    if val3 > largest_val {
+        largest_val = val3; 
+    }
+    
+    largest_val
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    
+    #[test]
+    fn same_value() {
+        assert_eq!(max_of_three((1, 1, 1)), 1)
+    }
+    
+    #[test]
+    fn negative_value() {
+        assert_eq!(max_of_three((-1, -1, -2)), -1)
+    }
+    
+    #[test]
+    fn normal_test() {
+        assert_eq!(max_of_three((-1, 4, 6)), 6)
+    }
+}
+```
