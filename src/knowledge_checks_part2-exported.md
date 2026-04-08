@@ -918,13 +918,13 @@ impl Counter {
     fn increment(&mut self) {
         self.count += 1
     }
-    fn value(&self) -> f64  {
+    fn value(&self) -> i32  {
         self.count 
     }
 }
 
 fn main() {
-    let counter = Counter::new(); 
+    let mut counter = Counter::new(); 
     counter.increment(); 
     counter.increment(); 
     counter.increment(); 
@@ -1019,19 +1019,16 @@ impl StringBuilder {
     fn add(&mut self, text: &str) {
         self.content.push_str(text); 
     }
-}
-
-impl Clone for StringBuilder {
     fn build(&self) -> String {
-        StringBuilder { content: self.content }
+        self.content.clone() 
     }
 }
 
 fn main() { 
-    let stringbuilder = StringBuilder::new()
-    stringbuilder.add("Hello, ")
-    stringbuilder.add("World!")
-    let stringbuilder_cloned = stringbuilder.build()
+    let stringbuilder = StringBuilder::new(); 
+    stringbuilder.add("Hello, "); 
+    stringbuilder.add("World!"); 
+    let stringbuilder_cloned = stringbuilder.build(); 
 
     println!("{:?}", stringbuilder_cloned )
 }
@@ -1068,7 +1065,7 @@ impl BankAccount {
     fn withdraw(&mut self, amount:f64) {
         let balance = self.balance; 
         let leftover = balance - amount; 
-        if leftover < 0 { 
+        if leftover < 0.0 { 
             false 
         } else { 
             self.balance = leftover;  
