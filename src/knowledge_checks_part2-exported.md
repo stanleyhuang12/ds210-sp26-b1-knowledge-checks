@@ -217,17 +217,19 @@ fn main() {
 }
 ```
 
+We can fix this by using the immutable reference before &s1. 
 
 ---
 
 Select all types that implement the `Copy` trait (i.e., are copied rather than moved on assignment):
 
-- [ ] A. `i32`
+- [X] A. `i32`
 - [ ] B. `String`
-- [ ] C. `bool`
-- [ ] D. `f64`
+- [X] C. `bool`
+- [X] D. `f64`
 - [ ] E. `Vec<i32>`
 
+A Copy trait are unique cases where values get copied and do not move. The data have to be entirely on the stack (so not heap-allocated). 
 
 ---
 
@@ -242,15 +244,18 @@ fn main() {
 ```
 
 ```rust,editable
-
+fn main() {
+    let s1 = String::from("hello");
+    let s2 = &s1; // take the immutable reference 
+    println!("{} {}", s1, s2);
+}
 
 ```
-
 
 ---
 
 **What is the difference between an immutable reference (`&T`) and a mutable reference (`&mut T`) in Rust? How many of each can you have at the same time?**
-<br><br>
+<br> The immutable reference will allow us to specify data that points to the underlying data but does not allow for modification of the underlying data. Whereas, the mutable reference allows for modification of the data. You can only have one mutable reference at a time. You can have any amount of immutable reference at one time. <br>
 
 
 ---
@@ -260,12 +265,13 @@ fn main() {
 ```rust,compile_fail
 fn main() {
     let mut s = String::from("hello");
-    let r1 = &s;
-    s.push_str(" world");
+    let r1 = &s; // this takes an immutable borrow 
+    s.push_str(" world"); // this takes a mutable borrow 
     println!("{}", r1);
     println!("{}", s);
 }
 ```
+One way to fix this code is to complete the use of r1 by moving the println macro for r1 before the mutable borrow of s. 
 
 
 ---
@@ -276,7 +282,16 @@ Call the function from `main` with `"hello world"` and print the result.
 
 ```rust,editable
 
+fn first_word_len(words: &str) -> usize {
+    let words_array: Vec<&str> = words.split_whitespace().collect(); 
+    let length = words_array[0].len(); 
+    length 
+}
 
+fn main() {
+    let length = first_word_len("hello world"); 
+    println!("Length of phrase `hello world` is {}", length); 
+}
 
 
 ```
@@ -298,15 +313,17 @@ fn main() {
 }
 ```
 
+The program has a bug because the function take_ownership takes the ownership of the data when s is passed in. To fix this, we have to make sure the take_ownership function takes an immutable reference so that it only borrows the data and the ownership of the data does not move within the function. 
+
 
 ---
 
 Select all statements that are true about Rust's borrowing rules:
 
-- [ ] A. You can have multiple immutable references at the same time.
+- [X] A. You can have multiple immutable references at the same time.
 - [ ] B. You can have multiple mutable references at the same time.
 - [ ] C. You can have one mutable reference and one immutable reference at the same time.
-- [ ] D. A mutable reference requires the variable itself to be declared `mut`.
+- [X] D. A mutable reference requires the variable itself to be declared `mut`.
 
 
 ---
@@ -325,6 +342,8 @@ fn main() {
 }
 ```
 
+This will print `hello world` and `hello ds210!` because the s2 gets another scope when we enter the curly braces. 
+
 
 ---
 
@@ -332,7 +351,7 @@ fn main() {
 
 ```rust
 fn append_suffix(mut s: String, suffix: &str) -> String {
-    s.push_str(suffix);
+    s.push_str(suffix); // push_str takes a mutable reference
     s
 }
 
@@ -342,7 +361,7 @@ fn main() {
     println!("{}", s2);
 }
 ```
-
+The output would look like hello world since ownership is transferred to the output s2. 
 
 ---
 
@@ -350,19 +369,21 @@ fn main() {
 
 ```rust
 fn main() {
-    let mut v = vec![1, 2, 3];
-    let r1 = &v;
-    let r2 = &v;
-    println!("{:?} {:?}", r1, r2);
-    v.push(4);
-    println!("{:?}", v);
+    let mut v = vec![1, 2, 3]; // define a mutable array called v 
+    let r1 = &v; // create a pointer r1 or an immutable reference 
+    let r2 = &v; // create a pointer r2 or an immutable reference 
+    println!("{:?} {:?}", r1, r2); // this will print [1, 2, 3] and [1, 2, 3]
+    v.push(4); // this will work because it takes a mutable reference and appends the value 4. moreover all immutable references have been used 
+    println!("{:?}", v); // [1,2 3, 4]
 }
 ```
+[1, 2, 3] [1, 2, 3]
+[1, 2, 3, 4]
 
 
 ---
 
-When a `String` is assigned to another variable, ownership is ___ . To create a deep copy of a `String`, you call the `___` method.
+When a `String` is assigned to another variable, ownership is `moved`. To create a deep copy of a `String`, you call the `.clone()` method.
 
 
 ---
@@ -370,13 +391,13 @@ When a `String` is assigned to another variable, ownership is ___ . To create a 
 **Fix this program so it compiles. Do NOT use `.clone()`.**
 
 ```rust,compile_fail
-fn print_length(s: String) {
+fn print_length(s: &String) {
     println!("Length: {}", s.len());
 }
 
 fn main() {
     let s = String::from("hello");
-    print_length(s);
+    print_length(&s);
     println!("{}", s);
 }
 ```
@@ -402,9 +423,8 @@ Prerequisite: [Ownership and Borrowing](#ownership-and-borrowing)
 fn main() {
     let mut vector: Vec<i32> = vec![1, 2, 3, 4, 5]; 
     vector.push(6); 
-    println!(vector); 
+    println!("{:?}", vector); 
 }
-
 ```
 
 ---
@@ -419,12 +439,14 @@ v.get() gets the value at a particular index and returns the value wrapped in an
 
 ```rust,compile_fail
 fn main() {
-    let mut v = vec![1, 2, 3];
-    let first = &v[0];
-    v.push(4);
+    let mut v = vec![1, 2, 3]; // this creates a mutable variable v that stores the vectors from 1-3
+    let first = &v[0]; // this creates a reference to the first value 
+    v.push(4); // this relies on a mutable reference and we can not have mutable and immutable reference at the same time 
     println!("{}", first);
 }
 ```
+
+We can fix it by moving the println ahead of the `v.push(4)`
 
 
 ---
@@ -434,6 +456,14 @@ fn main() {
 Call it from `main` with `vec![10, 20, 30]` and print the result.
 
 ```rust,editable
+fn sum_vec(vector: &Vec<i32>)-> i32 { 
+    vector.iter().sum() 
+}
+
+fn main() {
+    let a_vector = vec![10, 20, 30]; 
+    println!("Sum of the vector: {:?}", sum_vec(&a_vector))
+}
 
 
 ```
@@ -442,17 +472,17 @@ Call it from `main` with `vec![10, 20, 30]` and print the result.
 ---
 
 **What is the difference between `String` and `&str` in Rust?**
-<br><br>
+<br>String is a data type that is dynamically allocated on the heap and is growable. Whereas a string slice is not dynamically allocated and lives on the stack. <br>
 
 
 ---
 
 **Select all statements that are true about stack and heap memory:**
 
-- [ ] A. Values with a known, fixed size at compile time are stored on the stack.
+- [X] A. Values with a known, fixed size at compile time are stored on the stack.
 - [ ] B. `String` data is stored entirely on the stack.
-- [ ] C. `Vec<T>` stores its elements on the heap.
-- [ ] D. Stack allocation is generally faster than heap allocation.
+- [X] C. `Vec<T>` stores its elements on the heap.
+- [X] D. Stack allocation is generally faster than heap allocation.
 - [ ] E. An `i32` variable is stored on the heap.
 
 
@@ -462,23 +492,24 @@ Call it from `main` with `vec![10, 20, 30]` and print the result.
 
 ```rust
 fn main() {
-    let mut v = vec![10, 20, 30];
-    let last = v.pop();
+    let mut v = vec![10, 20, 30]; // creates a mutable vector 
+    let last = v.pop(); // mutates the vector and removes the last value and returns it wrapped in Some(30)
     println!("{:?}", last);
     println!("{:?}", v);
 }
 ```
-
-
+The output of this program is 
+Some(30)
+[10, 20]
 ---
 
 **What is the output of this program?**
 
 ```rust
 fn main() {
-    let v = vec![10, 20, 30];
-    println!("{:?}", v.get(1));
-    println!("{:?}", v.get(5));
+    let v = vec![10, 20, 30];  // creates a mutable vector 
+    println!("{:?}", v.get(1)); // Some(20)
+    println!("{:?}", v.get(5)); // None 
 }
 ```
 
@@ -488,7 +519,11 @@ fn main() {
 **Write a program that creates a `Vec<i32>` with values `[1, 2, 3, 4, 5]`, doubles every element in place, and prints the result.**
 
 ```rust,editable
-
+fn main() {
+    //Doubles every value
+    let mut v: Vec<i32> = vec![1, 2, 3, 4, 5]; 
+    println!("Doubled vector {:?}", v.iter_mut().map(|*x| x*x ).collect())
+}
 
 ```
 
@@ -501,6 +536,11 @@ fn main() {
 3. Convert it to uppercase and print the result
 
 ```rust,editable
+fn main() {
+    let words = String::from("Hello, World!"); 
+    println!("{}, {}, {}", words.len(), words.contains("World"), words.to_uppercase();)
+
+}
 
 
 ```
@@ -509,7 +549,7 @@ fn main() {
 ---
 
 **What is the difference between `Vec::new()` and `Vec::with_capacity(10)`? Why would you prefer one over the other?**
-<br><br>
+<br>Vec::new() initializes an empty vector with no values but has a default capacity of 0. No memory is allocated yet. Whereas, the Vec::with_capacity() creates a vector with a default capacity of 10, but the vector is still empty. We would prefer one over the other depending on whether we know how much memory is needed beforehand. This is so that we avoid multiple reallocation which rust does by doubling capacity which has some overhead.<br>
 
 
 ---
@@ -521,6 +561,8 @@ Prerequisite: [Ownership and Borrowing](#ownership-and-borrowing)
 
 **What is a slice in Rust, and how does it differ from owning the data?**
 <br><br>
+
+A slice in Rust is a reference to the collection. It   differs from owning the data because it borrows either the entire collection or part of a collection without taking ownership. So, a slice consists of a pointer and length to the data. 
 
 
 ---
