@@ -757,9 +757,9 @@ x={10}, y={20}
 - [X] A. Named struct fields are accessed with dot notation and the field name.
 - [X] B. Tuple struct fields are accessed with dot notation and a numeric index.
 - [ ] C. You can omit fields when creating a named struct instance.
-- [ ] D. Tuple structs provide type safety over plain tuples with the same field types.
+- [X] D. Tuple structs provide type safety over plain tuples with the same field types.
 
-
+- Basically D means we can interchange a struct Color(u8;3) with Point(u8;3) because there is type safety implemented. 
 ---
 
 **Define an enum `Shape` with variants:**
@@ -774,27 +774,28 @@ Hint: You can access the value of $\pi$ using `std::f64::consts::PI`.
 
 ```rust,editable
 enum Shape {
-    Circle { radius: f64 }
+    Circle { radius: f64 },
     Rectangle { width: f64, height:f64 }
 }
 
 use std::f64::consts; 
 
-fn area(shape: &Shape) {
+fn area(shape: &Shape)->f64 {
     match shape {
-        Shape::Circle => { shape.radius * shape.radius * consts::PI }, 
-        Shape::Rectangle => { shape.width * shape.height }
+        Shape::Circle { radius }  => { radius * radius * consts::PI }, 
+        Shape::Rectangle { width, height } => { width * height }
     }
 }
 
 fn main() {
-    let circle_shape = Shape::Circle { 5.0 }; 
-    let rectangle_shape = Shape::Rectangle { 4.0, 3.0 }; 
+    let circle_shape = Shape::Circle { radius: 5.0 }; 
+    let rectangle_shape = Shape::Rectangle { width: 4.0, height: 3.0 }; 
 
-    println!("Circle area: {}, Rectangle: area", area(&circle_shape), area(&rectangle_shape)); 
+    println!("Circle area: {}, Rectangle: area: {}", area(&circle_shape), area(&rectangle_shape)); 
 }
 ```
-
+- Note that pattern matching requires destructuring the data to get the fields for use 
+- TODO: Also we should look into if let statements in destructuring 
 
 ---
 
@@ -832,7 +833,7 @@ struct Temperature {
 }
 
 fn to_fahrenheit(temp: &Temperature) -> f64 {
-    temp.celsisus * (9/5) + 32.0 
+    temp.celsius * (9/5) as f64 + 32.0 
 }
 
 fn main() {
@@ -847,7 +848,12 @@ fn main() {
 
 
 ## Methods
-
+> Biggest problems to fix: always ensure we are outputting a type though sometimes they are null/void.
+> Make sure we write mut for instances where we need to modify the internal structure (especially after constructor calls)
+> Make sure when you are comparing that you specify the write type f64 comparies with f64
+> Make sure to pass in parameters with field keys 
+> After a Struct tuple, use a semicolon 
+> Match requires destructuring the fields and using it 
 Prerequisite: [Structs](#structs)
 
 **Implement the following code:**
