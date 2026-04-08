@@ -570,19 +570,22 @@ A slice in Rust is a reference to the collection. It   differs from owning the d
 **Initialize an array to be `[10, 20, 30, 40, 50]`. Create a slice containing elements `[20, 30, 40]` and print it with debug formatting.**
 
 ```rust,editable
+fn main() {
+    let new_vec: Vec<i32> = vec![10, 20, 30, 40, 50]; 
+    let slice_of_new_vec: &Vec<i32> = &new_vec[1..4]; 
 
-
+    println!("{:?}", slice_of_new_vec); 
+}
 ```
-
 
 ---
 
 **Given `let arr = [1, 2, 3, 4, 5];`:**
 
-- `&arr[0..3]` gives `___`.
-- `&arr[2..]` gives `___`.
-- `&arr[..2]` gives `___`.
-- `&arr[..]` gives `___`.
+- `&arr[0..3]` gives `1, 2, 3`.
+- `&arr[2..]` gives `3, 4, 5`.
+- `&arr[..2]` gives `1, 2`.
+- `&arr[..]` gives `1, 2, 3, 4, 5`.
 
 
 ---
@@ -591,13 +594,13 @@ A slice in Rust is a reference to the collection. It   differs from owning the d
 
 ```rust,compile_fail
 fn main() {
-    let mut arr = [1, 2, 3, 4, 5];
-    let slice = &arr[1..3];
-    slice[0] = 99;
+    let mut arr = [1, 2, 3, 4, 5]; // initializes a vector of numbers between 1-5
+    let slice = &arr[1..3]; // an immutable reference 
+    slice[0] = 99;  // won't compile because slice is not mutable and won't run 
     println!("{:?}", slice);
 }
 ```
-
+One way to fix this is by `let slice = &mut arr[1..3]`
 
 ---
 
@@ -608,15 +611,25 @@ Call it from `main` with `[1, 2, 3, 4]` and print the array after the call.
 ```rust,editable
 
 
-```
+fn double_slice(slice: &mut [i32])  {
+   for s in slice.iter_mut() {
+       *s = *s * *s
+   }
+}
 
+fn main() {
+    let mut array = [1, 2, 3, 4]; 
+    double_slice(&mut array); 
+    println!("{:?}", array); 
+}
+```
 
 ---
 
 **Select all statements that are true about string slices (`&str`):**
 
 - [ ] A. `&str` can reference a string literal stored in the program's read-only memory.
-- [ ] B. `&str` can reference a portion of a `String` on the heap.
+- [X] B. `&str` can reference a portion of a `String` on the heap.
 - [ ] C. `&str` owns the string data it points to.
 - [ ] D. A string literal `"hello"` has type `&str`.
 
