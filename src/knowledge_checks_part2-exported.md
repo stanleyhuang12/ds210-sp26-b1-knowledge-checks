@@ -639,8 +639,15 @@ fn main() {
 **Write a function `sum_slice(data: &[i32]) -> i32` that returns the sum of all elements in a slice. Test it from `main` by passing a slice of indices 1, 2 and 3 of an array `[10, 20, 30, 40, 50]`.**
 
 ```rust,editable
-
-
+fn sum_slice(data: &[i32]) -> i32 {
+    //pass in an array and sum it up 
+    data.iter().sum()
+}
+fn main() {
+    let an_array = [10, 20, 30, 40, 50]; 
+    let sum_of_an_array = sum_slice(&an_array[1..4]); 
+    println!("Sum of array: {}", sum_of_an_array); 
+}
 ```
 
 
@@ -649,6 +656,11 @@ fn main() {
 **Given `let s = String::from("Hello, World!");`, create a string slice of just `"World"` and print it. Reminder: for this string, bytes line up with characters.**
 
 ```rust,editable
+fn main() {
+    let s = String::from("Hello, World!"); 
+    let slice = &s[7..12]; 
+    println!("Slice of string {}", slice); 
+}
 
 
 ```
@@ -660,19 +672,25 @@ fn main() {
 
 ```rust,editable
 
+fn main() {
+    let s = "Hello, 👋👋👋 World!"; 
+    let s_string = s.to_string(); 
+    let sub_string = s.chars().skip(7).take(8).collect(); 
 
+    println!("Substring: {}", sub_string)
+}
 ```
 
 
 ---
 
 **Why is it generally preferred to accept `&[T]` (a slice) rather than `&Vec<T>` as a function parameter?**
-<br><br>
+<br>It is generally preferred to accept a slice of the vector because it is more flexible. You can pass in the entire collection or even a smaller subset of the collection for Vec, array, or even a slice of those, whereas the Vec<i32> you have to take the &Vec<i32>, meaning you borrow the entire collection including capacity information and memory.  <br>
 
 
 ---
 
-**A slice is internally represented as two values: a `___` to the first element and a `___`. Unlike a `Vec`, a slice does not have a capacity field.**
+**A slice is internally represented as two values: a `pointer` to the first element and a `length`. Unlike a `Vec`, a slice does not have a capacity field.**
 
 
 ---
