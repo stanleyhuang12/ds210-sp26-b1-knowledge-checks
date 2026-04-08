@@ -704,7 +704,16 @@ Prerequisite: [Ownership and Borrowing](#ownership-and-borrowing)
 
 ```rust,editable
 
+struct Student {
+    name: String, 
+    age: u32, 
+    gpa: f64, 
+}
 
+fn main() {
+    let student = Student { String::from("Stanley"), 21, 3.94 }; 
+    println!("Student name: {}, Student age: {}, Student gpa: {}", student.name, student.age, student.gpa); 
+}
 ```
 
 
@@ -713,10 +722,14 @@ Prerequisite: [Ownership and Borrowing](#ownership-and-borrowing)
 **Define a tuple struct `Color` with three `u8` fields (for red, green, blue). Create an instance initialized to values 128, 111, 154, and print each component.**
 
 ```rust,editable
+struct Color(u8, u8, u8) 
 
+fn main() {
+    let color = Color(128, 111, 154); 
+    println!("{}, {}, {}", color.0, color.1, color.2); 
+}
 
 ```
-
 
 ---
 
@@ -734,14 +747,15 @@ fn main() {
     println!("x={}, y={}", x, y);
 }
 ```
-
+The output looks like 
+x={10}, y={20}
 
 ---
 
 **Select all statements that are true about structs and tuple structs:**
 
-- [ ] A. Named struct fields are accessed with dot notation and the field name.
-- [ ] B. Tuple struct fields are accessed with dot notation and a numeric index.
+- [X] A. Named struct fields are accessed with dot notation and the field name.
+- [X] B. Tuple struct fields are accessed with dot notation and a numeric index.
 - [ ] C. You can omit fields when creating a named struct instance.
 - [ ] D. Tuple structs provide type safety over plain tuples with the same field types.
 
@@ -759,8 +773,26 @@ fn main() {
 Hint: You can access the value of $\pi$ using `std::f64::consts::PI`.
 
 ```rust,editable
+enum Shape {
+    Circle { radius: f64 }
+    Rectangle { width: f64, height:f64 }
+}
 
+use std::f64::consts; 
 
+fn area(shape: &Shape) {
+    match shape {
+        Shape::Circle => { shape.radius * shape.radius * consts::PI }, 
+        Shape::Rectangle => { shape.width * shape.height }
+    }
+}
+
+fn main() {
+    let circle_shape = Shape::Circle { 5.0 }; 
+    let rectangle_shape = Shape::Rectangle { 4.0, 3.0 }; 
+
+    println!("Circle area: {}, Rectangle: area", area(&circle_shape), area(&rectangle_shape)); 
+}
 ```
 
 
@@ -784,6 +816,8 @@ fn main() {
 }
 ```
 
+The errror is that ownership of the data. Setting `b2 = b1` moves the ownership of the data from b1 to b2. Rust will call the drop function for b1. Thus, the data in b1 is not accessible. The reason for this is because Rust implements this is to be memory safe so that there is no double free issue which can create problems. We can fix it by calling the `.clone` method which does a deep copy so that the ownership does not transfer. 
+
 
 ---
 
@@ -793,6 +827,18 @@ fn main() {
 
 ```rust,editable
 
+struct Temperature { 
+    celsius: f64
+}
+
+fn to_fahrenheit(temp: &Temperature) -> f64 {
+    temp.celsisus * (9/5) + 32.0 
+}
+
+fn main() {
+    let a_temp = Temperature { celsius: 28.0 }; 
+    println!("Fahrenheit conversion: {}", to_fahrenheit(&a_temp)) 
+}
 
 ```
 
@@ -811,7 +857,25 @@ Prerequisite: [Structs](#structs)
 4. Write a `main` that creates a rectangle, using the constructor method, of width 10.0 and height 5.0 and prints its area.
 
 ```rust,editable
+struct Rectangle {
+    width: f64, 
+    height: f64
+}
 
+impl Rectangle {
+    fn new(width:f64, height:f64) -> Rectangle {
+        Rectangle { width, height }
+    }
+
+    fn area(&self) {
+        self.width * self.height 
+    }
+}
+
+fn main() {
+    let rectangle = Rectangle::new(10.0, 5.0); 
+    println!("{}", rectangle.area())
+}
 
 ```
 
@@ -819,7 +883,12 @@ Prerequisite: [Structs](#structs)
 ---
 
 **Explain the difference between `&self`, `&mut self`, and `self` as method parameters.**
-<br><br>
+<br>
+
+&self takes an immutable reference of itself 
+&mut self takes. a mutable reference of itself 
+self takes the actual values of the struct 
+<br>
 
 
 ---
@@ -832,8 +901,30 @@ Prerequisite: [Structs](#structs)
 **Test it in `main` by creating a counter, incrementing it three times, and printing the result.**
 
 ```rust,editable
+struct Counter {
+    count: i32
+}
 
+impl Counter {
+    fn new() -> Counter {
+        Counter { count: 0 } 
+    }
+    fn increment(&mut self) {
+        self.count += 1
+    }
+    fn value(&self) -> f64  {
+        self.count 
+    }
+}
 
+fn main() {
+    let counter = Counter::new(); 
+    counter.increment(); 
+    counter.increment(); 
+    counter.increment(); 
+
+    println!("{}", counter.value()); 
+}
 ```
 
 
@@ -854,7 +945,7 @@ impl Ticket {
 
 fn main() {
     let t = Ticket { event: String::from("Concert") };
-    t.redeem();
+    t.redeem(); // the redeem function accepts `self` and will transfer the ownership of t to within the function. Thus t moves to within the function and can not be accessed again 
     t.redeem();
 }
 ```
@@ -864,16 +955,40 @@ fn main() {
 
 Select all statements that are true about methods and associated functions:
 
-- [ ] A. Methods take `self`, `&self`, or `&mut self` as their first parameter.
-- [ ] B. You can have associated functions, like constructors, that do not have a `self` parameter.
-- [ ] C. Methods are called with dot syntax: `instance.method()`.
+- [x] A. Methods take `self`, `&self`, or `&mut self` as their first parameter.
+- [x] B. You can have associated functions, like constructors, that do not have a `self` parameter.
+- [x] C. Methods are called with dot syntax: `instance.method()`.
 - [ ] D. Associated functions of a struct that has not been instantiated are called with dot syntax: `instance.function()`.
 
 
 ---
 
 **Can you have more than one `impl` block for the same struct? Why might this be useful?**
-<br><br>
+<br>
+yes, you can implement more than one implementation block for the same struct; at compile time, Rust will merge all of them together. this might be useful because we can define different traits for different methods 
+
+
+```rust
+
+impl Point {
+    fn new(x: i32, y: i32) -> Point { Point { x, y } }
+}
+
+impl Clone for Point {
+    fn clone(&self) -> Self {
+        Point { x: self.x, y: self.y }
+    }
+}
+
+use std::fmt;
+impl fmt::Display for Point {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "({}, {})", self.x, self.y)
+    }
+}
+```
+
+<br>
 
 
 ---
@@ -887,6 +1002,33 @@ Select all statements that are true about methods and associated functions:
 
 ```rust,editable
 
+struct StringBuilder {
+    content: String
+}
+
+impl StringBuilder {
+    fn new() -> StringBuilder {
+        StringBuilder { content: String::from("")}
+    }
+    fn add(&mut self, text: &str) {
+        self.content.push_str(text); 
+    }
+}
+
+impl Clone for StringBuilder {
+    fn build(&self) -> String {
+        StringBuilder { content: self.content }
+    }
+}
+
+fn main() { 
+    let stringbuilder = StringBuilder::new()
+    stringbuilder.add("Hello, ")
+    stringbuilder.add("World!")
+    let stringbuilder_cloned = stringbuilder.build()
+
+    println!("{:?}", stringbuilder_cloned )
+}
 
 ```
 
@@ -903,6 +1045,42 @@ Select all statements that are true about methods and associated functions:
 
 ```rust,editable
 
+struct BankAccount {
+    owner: String, 
+    balance: f64
+}
+
+impl BankAccount { 
+    fn new(owner: &str, balance:f64) -> BankAccount {
+        BankAccount { owner: owner.to_string(), balance: balance }
+    }
+    fn deposit(&mut self, amount: f64) {
+        if amount > 0 {
+            self.balance += amount; 
+        } 
+    }
+    fn withdraw(&mut self, amount:f64) {
+        let balance = self.balance; 
+        let leftover = balance - amount; 
+        if leftover < 0 { 
+            false 
+        } else { 
+            self.balance = leftover;  
+            true 
+        }
+    }
+    fn display(&self) {
+        println!("Owner: {} and Balance: {}", self.owner, self.balance)
+    }
+}
+
+fn main() {
+    let aliceBank = BankAccount::new("Alice", 100.0); 
+    aliceBank.deposit(50.0); 
+    let withdrawStatus = aliceBank.withdraw(30.0); 
+    println!("withdraw status: {}", withdrawStatus); 
+    aliceBank.display(); 
+}
 
 ```
 
@@ -911,7 +1089,7 @@ Select all statements that are true about methods and associated functions:
 
 **Fill in the blanks:**
 
-A method that needs to read but not modify the struct takes `___` as its first parameter. A method that needs to modify the struct takes `___`.
+A method that needs to read but not modify the struct takes `&self` as its first parameter. A method that needs to modify the struct takes `&mut self`.
 
 
 ---
