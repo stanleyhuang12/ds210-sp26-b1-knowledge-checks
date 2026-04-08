@@ -1107,6 +1107,22 @@ Prerequisite: [Methods](#methods)
 Test it from `main` with `[3, 7, 2, 9, 4]` and `["apple", "banana", "cherry"]`.
 
 ```rust,editable
+// T is a generic: any type can be passed in 
+// T is an augmented generic where only types with a specific methods cna be used 
+fn largest<T: PartialOrd>(values:&[T]) {
+    base_value = &values[0]
+    for value in values {
+        if value > base_value {
+            base_value = value 
+        }
+    }
+    base_value 
+}
+
+fn main() {
+    println!("{}", largest(&[3, 7, 2, 9, 4])); 
+    println!("{}", largest(&["apples", "banana", "cherry"]))
+}
 
 
 ```
@@ -1118,6 +1134,19 @@ Test it from `main` with `[3, 7, 2, 9, 4]` and `["apple", "banana", "cherry"]`.
 
 ```rust,editable
 
+struct Pair<T> {
+    first: <T>, 
+    second: <T>
+}
+
+impl PartialOrd for Pair {
+    fn new<T: PartialOrd>(first: T, second: T) -> Pai {
+        Pair { first, second }
+    }
+    fn larger<T>(&self) -> &T { 
+        if self.first > self.second { &self.first } else { &self.second }
+    }
+}
 
 ```
 
@@ -1125,16 +1154,16 @@ Test it from `main` with `[3, 7, 2, 9, 4]` and `["apple", "banana", "cherry"]`.
 ---
 
 **What is monomorphization, and why does Rust use it for generics?**
-<br><br>
+<br>Monomorphization is the idea where the compiler can generate multiple versions of the same function that takes in generic types.<br>
 
 
 ---
 
 **Fill in the blanks:**
 
-To use `>` and `<` operators on a generic type `T`, you need the trait bound `T: ___`.
+To use `>` and `<` operators on a generic type `T`, you need the trait bound `T: PartialOrd`.
 
-To use `println!("{}", value)` on a generic type `T`, you need the trait bound `T: ___`.
+To use `println!("{}", value)` on a generic type `T`, you need the trait bound `T: std::fmt::Display`.
 
 
 ---
@@ -1154,6 +1183,21 @@ fn main() {
     print_larger(10, 20);
 }
 ```
+```rust
+fn print_larger<T:PartialOrd>(a: T, b: T) {
+    if a > b {
+        println!("{}", a);
+    } else {
+        println!("{}", b);
+    }
+}
+
+fn main() {
+    print_larger(10, 20);
+}
+```
+
+We need to use the trait PartialOrd
 
 
 ---
@@ -1162,8 +1206,25 @@ fn main() {
 **Print the key and value of each instance.**
 
 ```rust,editable
+use std::fmt::Display
+struct KeyValue<K:Display,V:Display>{
+    key: K, 
+    value: V
+}; 
 
+impl KeyValue {
+    fn new<K:Display, V:Display>(key: K, value: V)-> KeyValue {
+        KeyValue { key, value }
+    }
+}; 
 
+fn main() {
+    let first_pair = KeyValue::new(key:"age", value:25); 
+    let second_pair = KeyValue::new(key:"age", value:25); 
+    println!("First pair: key={}, value={}", first_pair.key, first_pair.value); 
+    println!("Second pair: key={}, value={}", second_pair.key, second_pair.value); 
+
+}
 ```
 
 
@@ -1171,10 +1232,10 @@ fn main() {
 
 **Select all statements that are true about generics in Rust:**
 
-- [ ] A. Monomorphization means the compiler generates separate code for each concrete type used.
+- [X] A. Monomorphization means the compiler generates separate code for each concrete type used.
 - [ ] B. Generics have a runtime performance cost due to dynamic dispatch.
-- [ ] C. You can write specialized `impl` blocks that only apply to specific concrete types.
-- [ ] D. Multiple trait bounds are combined with `+`, e.g. `T: Display + PartialOrd`.
+- [X] C. You can write specialized `impl` blocks that only apply to specific concrete types.
+- [X] D. Multiple trait bounds are combined with `+`, e.g. `T: Display + PartialOrd`.
 
 
 
