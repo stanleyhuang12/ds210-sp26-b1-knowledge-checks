@@ -1253,6 +1253,12 @@ Prerequisite: [Generics](#generics)
 
 ```rust,editable
 
+fn safe_divide(a: f64, b:f64) -> Option<f64> {
+    match b {
+        0.0 => Err()
+        _ => Some(a/b)
+    }
+}
 
 ```
 
@@ -1271,12 +1277,18 @@ fn main() {
 }
 ```
 
+- This will print a 42, and a 0 
+
 
 ---
 
 **What is `Result<T, E>` in Rust and how does it differ from `Option<T>`?**
 <br><br>
 
+- Result is a more specific type where the variants are either Ok(T) or Err(E)m
+- Option is a type where the variants are Some(T) or None(T). 
+
+- They both take generic values 
 
 ---
 
@@ -1286,7 +1298,24 @@ Hint: Use the `parse` method as in `input.parse::<u32>()` which returns a `Resul
 
 ```rust,editable
 
+fn parse_age(input:&str) -> Result<u32, String> {
+    match input.parse::<u32>() {
+        Ok(value) { 
+            if value > 150 {
+                Err("Numbers are too large ")
+            } else {
+                Ok(value)
+            }
+        }
+        ParseIntError(_) => { Err("The string is not a valid number.") }
+    }
+}
 
+fn main() { 
+    println!("{}", parse_age("32")); 
+    println!("{}", parse_age("200")); 
+    println!("{}", parse_age("abc")); 
+}
 ```
 
 
@@ -1294,10 +1323,10 @@ Hint: Use the `parse` method as in `input.parse::<u32>()` which returns a `Resul
 
 **Select all statements that are true about `Option` and `Result`:**
 
-- [ ] A. Calling `.unwrap()` on `None` will cause a panic at runtime.
+- [X] A. Calling `.unwrap()` on `None` will cause a panic at runtime.
 - [ ] B. `.unwrap_or(default)` evaluates the default eagerly (even if the value is `Some`).
-- [ ] C. `.unwrap_or_else(|| expr)` evaluates the closure lazily (only if the value is `None`).
-- [ ] D. `Option<T>` and `Result<T, E>` are special compiler primitives, not regular enums.
+- [X] C. `.unwrap_or_else(|| expr)` evaluates the closure lazily (only if the value is `None`).
+- [X] D. `Option<T>` and `Result<T, E>` are special compiler primitives, not regular enums.
 
 
 ---
@@ -1305,7 +1334,14 @@ Hint: Use the `parse` method as in `input.parse::<u32>()` which returns a `Resul
 **In a main function, declare `let maybe_name: Option<&str> = Some("Alice");` and then use `if let` to print the name if it exists, or print "No name" otherwise.**
 
 ```rust,editable
-
+fn main() {
+    let maybe_name: Option<&str> = Some("Alice"); 
+    if let Some(name) = maybe_name { 
+        println!("{}", name);
+    } else {
+        println!("No name!");
+    }
+}
 
 ```
 
@@ -1326,8 +1362,7 @@ fn main() {
     println!("{:?}", doubled_none);
 }
 ```
-
-
+There will be an error because Option<T> can not be doubled 
 ---
 
 **What is the output of this program?**
@@ -1344,13 +1379,30 @@ fn main() {
 }
 ```
 
+* It will look like Parsed: 42, Error: not_a_number, Parsed: 7 
+
 
 ---
 
 **Write a function `find_first_even(numbers: &[i32]) -> Option<i32>` that returns the first even number in a slice, or `None` if there are no even numbers. Test it with `[1, 3, 4, 5, 6]` and `[1, 3, 5]`.**
 
 ```rust,editable
+fn find_first_even(numbers: &[i32]) -> Option<i32> {
+    for num in numbers { 
+        if num / 2 == 0 { 
+            Some(num)
+        } 
+    } 
+    None
+}
 
+fn main() { 
+    let vec = &[1, 2, 3, 4, 5, 6]; 
+    let vec2 = &[1, 3, 5]; 
+    println!("{:?}", find_first_even(vec)); 
+    println!("{:?}", find_first_even(vec2))
+
+}
 
 ```
 
@@ -1360,7 +1412,22 @@ fn main() {
 **Write a function `average(numbers: &[f64]) -> Result<f64, String>` that returns the average of the slice. Return an `Err` if the slice is empty. Write `main` demonstrating both the success and error cases using `match`.**
 
 ```rust,editable
+fn average(numbers: &[f64]) -> Result<f64, String> { 
+    if numbers.is_empty() {
+        Err("Numbers vector is empty")
+    }
+    let length:f64 = numbers.len()
+    let average: f64 = (numbers.iter().sum() / length) as f64 
 
+    Ok(average)
+}
+
+fn main() {
+    let empty_vector = []; 
+    let filled_vector = [1, 2, 3, 4, 5]; 
+
+
+}
 
 ```
 
@@ -1373,7 +1440,9 @@ fn main() {
 Prerequisite: [Option and Result](#option-and-result)
 
 **What is a closure in Rust, and how does its syntax differ from a regular function?**
-<br><br>
+<br>A closure is an anonymous function in Rust that does haven't a name. It can also capture variables in the scope of the code. 
+
+Its syntax is like | x, y| { some operation with x and y } <br>
 
 
 ---
@@ -1389,6 +1458,8 @@ fn main() {
 }
 ```
 
+The output is 15 and 30. 
+
 
 ---
 
@@ -1401,7 +1472,7 @@ fn main() {
     let n = identity(42);
 }
 ```
-
+Rust will infer a single concrete type for the closure function depending on how it is first used. In other words, it will take a string slice and thus for the second application of the closure will create an error between i32 and string slice. 
 
 ---
 
@@ -1409,6 +1480,14 @@ fn main() {
 
 ```rust,editable
 
+fn main() {
+    let mut count = 0;
+    let increment = || count += 1; 
+    increment(); 
+    increment(); 
+    increment(); 
+    println!("Final count {}", count)
+}
 
 ```
 
@@ -1416,27 +1495,39 @@ fn main() {
 ---
 
 **What is the difference between `.unwrap_or(default)` and `.unwrap_or_else(|| expr)` in terms of evaluation?**
-<br><br>
+<br>
+The `unwrap_or(default`) will evaluate to default automatically when the Option enum the function is unwrapping is of None type. Unwrap is always evaluated so it could be expesnive. Whereas the `unwrap_or_else(|| expr)` will only evaluate the closure function if it is needed. 
+<br>
 
 
 ---
 
 **Select all statements that are true about closures vs regular functions:**
 
-- [ ] A. Closures can capture variables from their enclosing scope.
+- [X] A. Closures can capture variables from their enclosing scope.
 - [ ] B. Regular functions can capture variables from their enclosing scope.
-- [ ] C. Closures always require type annotations on their parameters.
-- [ ] D. Closure parameter/return types are inferred from the first use and then fixed.
+- [] C. Closures always require type annotations on their parameters.
+- [x] D. Closure parameter/return types are inferred from the first use and then fixed.
 
 
 ---
-
 **Write a function `apply_twice` that takes an `i32` value and a closure that maps `i32 -> i32`, and returns the result of applying the closure twice. Test it by calling it from `main` with a closure that doubles a number (e.g., 3 becomes 6), and then calling `apply_twice` with that closure and the number 3 (so 3 becomes 12).**
 
 Hint: Use the `Fn` trait bound to specify the closure type as in `Fn(i32) -> i32`.
 
 ```rust,editable
+fn apply_twice<F>(value: i32, f: F) -> i32 where F: Fn(i32) -> i32 {
+    f(value)
+}
 
+fn main() {
+    let value = 3; 
+    let double = || value * 2
+    let quadruble = || value * 2 * 2 
+
+    println!("{}",  apply_twice(value:value, f:double)); 
+    println!("{}", apply_twice(value:value, f:quadruble)); 
+}
 
 ```
 
@@ -1446,7 +1537,10 @@ Hint: Use the `Fn` trait bound to specify the closure type as in `Fn(i32) -> i32
 **Create a vector of strings `["banana", "apple", "cherry"]` and sort it by string length (shortest first) using a closure with `.sort_by`. Print the result.**
 
 ```rust,editable
-
+fn main() {
+    let mut string_vec = vec!["banana", "apple", "cherry"]; w
+    string_vec.sort_by(|a, b| { a.len().cmp(&b.len())})
+}
 
 ```
 
@@ -1454,7 +1548,7 @@ Hint: Use the `Fn` trait bound to specify the closure type as in `Fn(i32) -> i32
 ---
 
 **What does the `move` keyword do when placed before a closure? When is it needed?**
-<br><br>
+<br>Move forces the closure to take ownership of the data. So, instead of borrowing the data, the closure also captures the variables. It is needed to avoid lifetime issues. <br>
 
 
 ---
