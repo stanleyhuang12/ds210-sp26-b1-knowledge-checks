@@ -1,0 +1,772 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+  11pt,
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\section{Reference Material}\label{reference-material}
+
+\subsection{Iterator Methods and
+Adapters}\label{iterator-methods-and-adapters}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{next(\&mut\ self)\ -\textgreater{}\ Option\textless{}Self::Item\textgreater{}}
+  Get the next element of an iterator (\texttt{None} if there isn't one)
+\item
+  \texttt{collect\textless{}B\textgreater{}(self)\ -\textgreater{}\ B}
+  -\textgreater{} Transforms the iterator into a collection of type
+  \texttt{B}
+\item
+  \texttt{take(n:\ usize)\ -\textgreater{}\ Take\textless{}Self\textgreater{}}
+  -\textgreater{} Take first N elements of an iterator and \emph{turn
+  them into an iterator}
+\item
+  \texttt{skip(n:\ usize)\ -\textgreater{}\ Skip\textless{}Self\textgreater{}}
+  -\textgreater{} Skip first N elements of an iterator and \emph{turn
+  them into an iterator}
+\item
+  \texttt{cycle()\ -\textgreater{}\ Cycle\textless{}Self\textgreater{}}
+  -\textgreater{} Turn a finite iterator into an infinite one that
+  repeats itself
+\item
+  \texttt{for\_each(\textbar{}x\textbar{}\ ...)\ -\textgreater{}\ ()}
+  -\textgreater{} Apply a closure to each element in the iterator
+\item
+  \texttt{filter(\textbar{}x\textbar{}\ ...)\ -\textgreater{}\ Filter\textless{}Self,\ P\textgreater{}}
+  -\textgreater{} \emph{Create new iterator} from old one for elements
+  where closure is true
+\item
+  \texttt{map(\textbar{}x\textbar{}\ ...)\ -\textgreater{}\ Map\textless{}Self,\ F\textgreater{}}
+  -\textgreater{} \emph{Create new iterator} by applying closure to
+  input iterator
+\item
+  \texttt{any(\textbar{}x\textbar{}\ ...)\ -\textgreater{}\ bool}
+  -\textgreater{} Return \texttt{true} if closure is true for any
+  element of the iterator
+\item
+  \texttt{fold(init:\ B,\ \textbar{}acc,\ x\textbar{}\ ...)\ -\textgreater{}\ B}
+  -\textgreater{} Initialize accumulator to \texttt{init}, execute
+  closure on each element
+\item
+  \texttt{reduce(\textbar{}acc,\ x\textbar{}\ ...)\ -\textgreater{}\ Option\textless{}Self::Item\textgreater{}}
+  -\textgreater{} Similar to fold but the initial value is the first
+  element
+\item
+  \texttt{zip(other\_iter)\ -\textgreater{}\ Zip\textless{}Self,\ U\textgreater{}}
+  -\textgreater{} Zip two iterators together into pairs of
+  \texttt{(a,\ b)}
+\item
+  \texttt{enumerate()\ -\textgreater{}\ Enumerate\textless{}Self\textgreater{}}
+  -\textgreater{} Create iterator of \texttt{(index,\ element)} pairs
+\item
+  \texttt{partition(\textbar{}x\textbar{}\ ...)\ -\textgreater{}\ (B,\ B)}
+  -\textgreater{} Split iterator into two \emph{collections} based on
+  predicate
+\item
+  \texttt{sum()\ -\textgreater{}\ S} -\textgreater{} Sum all elements
+  (works on numeric iterators)
+\item
+  \texttt{count()\ -\textgreater{}\ usize} -\textgreater{} Count the
+  number of elements in the iterator
+\item
+  \texttt{copied()\ -\textgreater{}\ Copied\textless{}Self\textgreater{}}
+  -\textgreater{} Create iterator of owned copies from an iterator of
+  references
+\end{itemize}
+
+\subsection{String and \&str Methods}\label{string-and-str-methods}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{s.len()\ -\textgreater{}\ usize} -\textgreater{} Number of
+  bytes in the string
+\item
+  \texttt{s.contains("sub")\ -\textgreater{}\ bool} -\textgreater{}
+  \texttt{true} if string contains the substring
+\item
+  \texttt{s.to\_uppercase()\ -\textgreater{}\ String} -\textgreater{}
+  Returns a new \texttt{String} in uppercase
+\item
+  \texttt{s.to\_lowercase()\ -\textgreater{}\ String} -\textgreater{}
+  Returns a new \texttt{String} in lowercase
+\item
+  \texttt{s.push(\textquotesingle{}c\textquotesingle{})\ -\textgreater{}\ ()}
+  -\textgreater{} Append a single character (mutates \texttt{String})
+\item
+  \texttt{s.push\_str("text")\ -\textgreater{}\ ()} -\textgreater{}
+  Append a string slice (mutates \texttt{String})
+\item
+  \texttt{s.chars()\ -\textgreater{}\ Chars\textless{}\textquotesingle{}\_\textgreater{}}
+  -\textgreater{} Iterator over the characters of the string
+\item
+  \texttt{s.split\_whitespace()\ -\textgreater{}\ SplitWhitespace\textless{}\textquotesingle{}\_\textgreater{}}
+  -\textgreater{} Iterator of substrings split by whitespace
+\item
+  \texttt{s.parse::\textless{}T\textgreater{}()\ -\textgreater{}\ Result\textless{}T,\ T::Err\textgreater{}}
+  -\textgreater{} Parse the string into type \texttt{T}
+\item
+  \texttt{s.is\_empty()\ -\textgreater{}\ bool} -\textgreater{}
+  \texttt{true} if the string has length 0
+\end{itemize}
+
+\subsection{Vec Methods}\label{vec-methods}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{v.push(val)\ -\textgreater{}\ ()} -\textgreater{} Append
+  element to the end
+\item
+  \texttt{v.pop()\ -\textgreater{}\ Option\textless{}T\textgreater{}}
+  -\textgreater{} Remove and return last element
+\item
+  \texttt{v.get(i:\ usize)\ -\textgreater{}\ Option\textless{}\&T\textgreater{}}
+  -\textgreater{} Safe bounds-checked access
+\item
+  \texttt{v.len()\ -\textgreater{}\ usize} -\textgreater{} Number of
+  elements
+\item
+  \texttt{v.is\_empty()\ -\textgreater{}\ bool} -\textgreater{}
+  \texttt{true} if the vector has no elements
+\item
+  \texttt{v.iter()\ -\textgreater{}\ Iter\textless{}\textquotesingle{}\_,\ T\textgreater{}}
+  -\textgreater{} Iterator of immutable references \texttt{\&T}
+\item
+  \texttt{v.iter\_mut()\ -\textgreater{}\ IterMut\textless{}\textquotesingle{}\_,\ T\textgreater{}}
+  -\textgreater{} Iterator of mutable references \texttt{\&mut\ T}
+\item
+  \texttt{v.into\_iter()\ -\textgreater{}\ IntoIter\textless{}T\textgreater{}}
+  -\textgreater{} Consuming iterator of owned values \texttt{T}
+\item
+  \texttt{v.sort\_by(\textbar{}a,\ b\textbar{}\ ...)\ -\textgreater{}\ ()}
+  -\textgreater{} Sort in place using a comparison closure (closure
+  returns \texttt{Ordering})
+\end{itemize}
+
+\subsection{Option Methods}\label{option-methods}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{opt.unwrap()\ -\textgreater{}\ T} -\textgreater{} Extract the
+  value or \textbf{panic} if \texttt{None}
+\item
+  \texttt{opt.unwrap\_or(default:\ T)\ -\textgreater{}\ T}
+  -\textgreater{} Extract the value or return \texttt{default} (eager)
+\item
+  \texttt{opt.unwrap\_or\_else(\textbar{}\textbar{}\ ...)\ -\textgreater{}\ T}
+  -\textgreater{} Extract the value or compute default via closure
+  (lazy)
+\item
+  \texttt{opt.map(\textbar{}x\textbar{}\ ...)\ -\textgreater{}\ Option\textless{}U\textgreater{}}
+  -\textgreater{} Transform the inner value; \texttt{None} stays
+  \texttt{None}
+\item
+  \texttt{opt.is\_some()\ -\textgreater{}\ bool} -\textgreater{}
+  \texttt{true} if \texttt{Some}
+\item
+  \texttt{opt.is\_none()\ -\textgreater{}\ bool} -\textgreater{}
+  \texttt{true} if \texttt{None}
+\end{itemize}
+
+\subsection{Other Useful Methods}\label{other-useful-methods}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{val.clone()\ -\textgreater{}\ T} -\textgreater{} Create a deep
+  copy of the value
+\item
+  \texttt{a.cmp(\&b)\ -\textgreater{}\ std::cmp::Ordering}
+  -\textgreater{} Compare two values
+\item
+  \texttt{(x\ as\ f64).sqrt()\ -\textgreater{}\ f64} -\textgreater{}
+  Square root of a floating-point number
+\item
+  \texttt{format!("...",\ args)\ -\textgreater{}\ String}
+  -\textgreater{} Like \texttt{println!} but returns a \texttt{String}
+  instead of printing
+\item
+  \texttt{\{:?\}} -\textgreater{} Debug format specifier (in
+  \texttt{println!} / \texttt{format!})
+\item
+  \texttt{\{:.2\}} -\textgreater{} Display with 2 decimal places
+\end{itemize}
+
+\subsection{Test Assertion Macros}\label{test-assertion-macros}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{assert!(expr)\ -\textgreater{}\ ()} -\textgreater{} Pass if
+  \texttt{expr} is \texttt{true}
+\item
+  \texttt{assert\_eq!(a,\ b)\ -\textgreater{}\ ()} -\textgreater{} Pass
+  if \texttt{a\ ==\ b}; shows both values on failure
+\item
+  \texttt{assert\_ne!(a,\ b)\ -\textgreater{}\ ()} -\textgreater{} Pass
+  if \texttt{a\ !=\ b}; shows both values on failure
+\item
+  Assert macros can take an optional custom failure message, e.g.,
+  \texttt{assert\_eq!(a,\ b,\ "\{\}\ is\ not\ equal\ to\ \{\}",\ a,\ b)}.
+\end{itemize}
+
+\subsection{HashMap Methods}\label{hashmap-methods}
+
+\subsubsection{Basic Operations:}\label{basic-operations}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{new()}: Creates an empty HashMap.
+\item
+  \texttt{insert(key,\ value)\ -\textgreater{}\ Option\textless{}V\textgreater{}}:
+  Adds a key-value pair to the map. If the map did not have the key then
+  \texttt{None} is returned, if the map did have the key \emph{the old
+  value is returned} as \texttt{Some(V)}.
+\item
+  \texttt{remove(key)\ -\textgreater{}\ Option\textless{}V\textgreater{}}:
+  Removes a key-value pair from the map. If the map did not have the key
+  then \texttt{None} is returned, if the map did have the key the value
+  is returned as \texttt{Some(V)}.
+\item
+  \texttt{get(key)\ -\textgreater{}\ Option\textless{}\&V\textgreater{}}:
+  Returns a reference to the value in the map, if any, that is equal to
+  the given key. Returns \texttt{None} if the key is not present.
+\item
+  \texttt{contains\_key(key)\ -\textgreater{}\ bool}: Checks if the map
+  contains a specific key. Returns \texttt{true} if present,
+  \texttt{false} otherwise.
+\item
+  \texttt{len()\ -\textgreater{}\ usize}: Returns the number of
+  key-value pairs in the map.
+\item
+  \texttt{is\_empty()\ -\textgreater{}\ bool}: Checks if the map
+  contains no key-value pairs.
+\item
+  \texttt{clear()}: Removes all key-value pairs from the map.
+\item
+  \texttt{drain()}: Clears the map and returns all key-value pairs as an
+  iterator.
+\end{itemize}
+
+\subsubsection{Entry API:}\label{entry-api}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{entry(key).or\_insert(value)}: Returns a mutable reference to
+  the value in the map, if any, that is equal to the given key. If the
+  key is not present, inserts the given value and returns a mutable
+  reference to the new value.
+\end{itemize}
+
+\subsubsection{Iterators and Views:}\label{iterators-and-views}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{iter()}: Returns an immutable iterator over the key-value
+  pairs in the map.
+\item
+  \texttt{iter\_mut()}: Returns a mutable iterator over the key-value
+  pairs in the map.
+\item
+  \texttt{keys()}: Returns an iterator over the keys in the map.
+\item
+  \texttt{values()}: Returns an iterator over the values in the map.
+\item
+  \texttt{values\_mut()}: Returns a mutable iterator over the values in
+  the map.
+\end{itemize}
+
+\subsection{HashSet Methods}\label{hashset-methods}
+
+\subsubsection{Basic Operations:}\label{basic-operations-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{new()}: Creates an empty HashSet.
+\item
+  \texttt{insert(value)}: Adds a value to the set. Returns true if the
+  value was not present, false otherwise.
+\item
+  \texttt{remove(value)}: Removes a value from the set. Returns true if
+  the value was present, false otherwise.
+\item
+  \texttt{contains(value)}: Checks if the set contains a specific value.
+  Returns true if present, false otherwise.
+\item
+  \texttt{len()}: Returns the number of elements in the set.
+\item
+  \texttt{is\_empty()}: Checks if the set contains no elements.
+\item
+  \texttt{clear()}: Removes all elements from the set.
+\item
+  \texttt{drain()}: Returns an iterator that removes all elements and
+  yields them. The set becomes empty after this operation.
+\end{itemize}
+
+\subsubsection{Entry API:}\label{entry-api-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{entry(value).or\_insert(value)}: Returns a mutable reference
+  to the value in the set, if any, that is equal to the given value. If
+  the value is not present, inserts the given value and returns a
+  mutable reference to the new value.
+\end{itemize}
+
+\subsubsection{Set Operations:}\label{set-operations}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{union(\&self,\ other:\ \&HashSet\textless{}T\textgreater{})}:
+  Returns an iterator over the elements that are in self or other (or
+  both).
+\item
+  \texttt{intersection(\&self,\ other:\ \&HashSet\textless{}T\textgreater{})}:
+  Returns an iterator over the elements that are in both self and other.
+\item
+  \texttt{difference(\&self,\ other:\ \&HashSet\textless{}T\textgreater{})}:
+  Returns an iterator over the elements that are in self but not in
+  other.
+\item
+  \texttt{symmetric\_difference(\&self,\ other:\ \&HashSet\textless{}T\textgreater{})}:
+  Returns an iterator over the elements that are in self or other, but
+  not in both.
+\item
+  \texttt{is\_subset(\&self,\ other:\ \&HashSet\textless{}T\textgreater{})}:
+  Checks if self is a subset of other.
+\item
+  \texttt{is\_superset(\&self,\ other:\ \&HashSet\textless{}T\textgreater{})}:
+  Checks if self is a superset of other.
+\item
+  \texttt{is\_disjoint(\&self,\ other:\ \&HashSet\textless{}T\textgreater{})}:
+  Checks if self has no elements in common with other.
+\end{itemize}
+
+\subsubsection{Iterators and Views:}\label{iterators-and-views-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{iter()}: Returns an immutable iterator over the elements in
+  the set.
+\item
+  \texttt{get(value)}: Returns a reference to the value in the set, if
+  any, that is equal to the given value.
+\end{itemize}
+
+\subsection{BTreeMap Methods}\label{btreemap-methods}
+
+\subsubsection{Basic Operations:}\label{basic-operations-2}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{new()}: Creates an empty BTreeMap.
+\item
+  \texttt{insert(key,\ value)\ -\textgreater{}\ Option\textless{}V\textgreater{}}:
+  Adds a key-value pair to the map. If the map did not have the key then
+  \texttt{None} is returned, if the map did have the key \emph{the old
+  value is returned} as \texttt{Some(V)}.
+\item
+  \texttt{remove(key)\ -\textgreater{}\ Option\textless{}V\textgreater{}}:
+  Removes a key-value pair from the map. If the map did not have the key
+  then \texttt{None} is returned, if the map did have the key the value
+  is returned as \texttt{Some(V)}.
+\item
+  \texttt{get(key)\ -\textgreater{}\ Option\textless{}\&V\textgreater{}}:
+  Returns a reference to the value in the map, if any, that is equal to
+  the given key. Returns \texttt{None} if the key is not present.
+\item
+  \texttt{contains\_key(key)\ -\textgreater{}\ bool}: Checks if the map
+  contains a specific key. Returns \texttt{true} if present,
+  \texttt{false} otherwise.
+\item
+  \texttt{len()\ -\textgreater{}\ usize}: Returns the number of
+  key-value pairs in the map.
+\item
+  \texttt{is\_empty()\ -\textgreater{}\ bool}: Checks if the map
+  contains no key-value pairs.
+\item
+  \texttt{clear()}: Removes all key-value pairs from the map.
+\item
+  \texttt{drain()}: Clears the map and returns all key-value pairs as an
+  iterator.
+\end{itemize}
+
+\subsubsection{Entry API:}\label{entry-api-2}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{entry(key).or\_insert(value)}: Returns a mutable reference to
+  the value in the map, if any, that is equal to the given key. If the
+  key is not present, inserts the given value and returns a mutable
+  reference to the new value.
+\end{itemize}
+
+\subsubsection{Iterators and Views:}\label{iterators-and-views-2}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{iter()}: Returns an immutable iterator over the key-value
+  pairs in the map.
+\item
+  \texttt{iter\_mut()}: Returns a mutable iterator over the key-value
+  pairs in the map.
+\item
+  \texttt{keys()}: Returns an iterator over the keys in the map.
+\item
+  \texttt{values()}: Returns an iterator over the values in the map.
+\item
+  \texttt{values\_mut()}: Returns a mutable iterator over the values in
+  the map.
+\item
+  \texttt{range(start..end)}: Returns an iterator over the key-value
+  pairs in the map in the range \texttt{{[}start,\ end)}.
+\item
+  \texttt{first\_key\_value()}: Returns the first key-value pair in the
+  map.
+\item
+  \texttt{last\_key\_value()}: Returns the last key-value pair in the
+  map.
+\end{itemize}
+
+\subsection{BTreeSet Methods}\label{btreeset-methods}
+
+\subsubsection{Basic Operations:}\label{basic-operations-3}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{new()}: Creates an empty BTreeSet.
+\item
+  \texttt{insert(value)}: Adds a value to the set. Returns true if the
+  value was not present, false otherwise.
+\item
+  \texttt{remove(value)}: Removes a value from the set. Returns true if
+  the value was present, false otherwise.
+\item
+  \texttt{contains(value)}: Checks if the set contains a specific value.
+  Returns true if present, false otherwise.
+\item
+  \texttt{len()}: Returns the number of elements in the set.
+\item
+  \texttt{is\_empty()}: Checks if the set contains no elements.
+\item
+  \texttt{clear()}: Removes all elements from the set.
+\item
+  \texttt{drain()}: Returns an iterator that removes all elements and
+  yields them. The set becomes empty after this operation.
+\end{itemize}
+
+\subsubsection{Entry API:}\label{entry-api-3}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{entry(value).or\_insert(value)}: Returns a mutable reference
+  to the value in the set, if any, that is equal to the given value. If
+  the value is not present, inserts the given value and returns a
+  mutable reference to the new value.
+\end{itemize}
+
+\subsubsection{Set Operations:}\label{set-operations-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{union(\&self,\ other:\ \&BTreeSet\textless{}T\textgreater{})}:
+  Returns an iterator over the elements that are in self or other (or
+  both).
+\item
+  \texttt{intersection(\&self,\ other:\ \&BTreeSet\textless{}T\textgreater{})}:
+  Returns an iterator over the elements that are in both self and other.
+\item
+  \texttt{difference(\&self,\ other:\ \&BTreeSet\textless{}T\textgreater{})}:
+  Returns an iterator over the elements that are in self but not in
+  other.
+\item
+  \texttt{symmetric\_difference(\&self,\ other:\ \&BTreeSet\textless{}T\textgreater{})}:
+  Returns an iterator over the elements that are in self or other, but
+  not in both.
+\item
+  \texttt{is\_subset(\&self,\ other:\ \&BTreeSet\textless{}T\textgreater{})}:
+  Checks if self is a subset of other.
+\item
+  \texttt{is\_superset(\&self,\ other:\ \&BTreeSet\textless{}T\textgreater{})}:
+  Checks if self is a superset of other.
+\item
+  \texttt{is\_disjoint(\&self,\ other:\ \&BTreeSet\textless{}T\textgreater{})}:
+  Checks if self has no elements in common with other.
+\end{itemize}
+
+\subsubsection{Iterators and Views:}\label{iterators-and-views-3}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{iter()}: Returns an immutable iterator over the elements in
+  the set.
+\item
+  \texttt{get(value)}: Returns a reference to the value in the set, if
+  any, that is equal to the given value.
+\end{itemize}
+
+\subsection{BinaryHeap Methods
+(Max-Heap)}\label{binaryheap-methods-max-heap}
+
+\texttt{std::collections::BinaryHeap} is a max-heap priority queue. Use
+\texttt{std::cmp::Reverse} to get a min-heap.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{new()}: Creates an empty \texttt{BinaryHeap}.
+\item
+  \texttt{from(vals)}: Creates a \texttt{BinaryHeap} from an array or
+  vector.
+\item
+  \texttt{from\_iter(iter)}: Creates a \texttt{BinaryHeap} from an
+  iterator.
+\item
+  \texttt{push(value)\ -\textgreater{}\ ()}: Inserts a value into the
+  heap.
+\item
+  \texttt{pop()\ -\textgreater{}\ Option\textless{}T\textgreater{}}:
+  Removes and returns the largest element, or \texttt{None} if empty.
+\item
+  \texttt{peek()\ -\textgreater{}\ Option\textless{}\&T\textgreater{}}:
+  Returns a reference to the largest element without removing it.
+\item
+  \texttt{len()\ -\textgreater{}\ usize}: Number of elements.
+\item
+  \texttt{is\_empty()\ -\textgreater{}\ bool}: \texttt{true} if the heap
+  has no elements.
+\item
+  \texttt{iter()}: Returns an iterator over the elements in arbitrary
+  order (not sorted).
+\item
+  \texttt{into\_sorted\_vec()\ -\textgreater{}\ Vec\textless{}T\textgreater{}}:
+  Consumes the heap and returns a \texttt{Vec} sorted in ascending
+  order.
+\end{itemize}
+
+\subsection{VecDeque Methods (Double-Ended
+Queue)}\label{vecdeque-methods-double-ended-queue}
+
+\texttt{std::collections::VecDeque} is a double-ended queue (ring
+buffer). Commonly used as a FIFO queue via \texttt{push\_back} /
+\texttt{pop\_front}.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{new()}: Creates an empty \texttt{VecDeque}.
+\item
+  \texttt{push\_back(value)\ -\textgreater{}\ ()}: Appends an element to
+  the back.
+\item
+  \texttt{push\_front(value)\ -\textgreater{}\ ()}: Prepends an element
+  to the front.
+\item
+  \texttt{pop\_back()\ -\textgreater{}\ Option\textless{}T\textgreater{}}:
+  Removes and returns the back element.
+\item
+  \texttt{pop\_front()\ -\textgreater{}\ Option\textless{}T\textgreater{}}:
+  Removes and returns the front element.
+\item
+  \texttt{front()\ -\textgreater{}\ Option\textless{}\&T\textgreater{}}:
+  Reference to the front element.
+\item
+  \texttt{back()\ -\textgreater{}\ Option\textless{}\&T\textgreater{}}:
+  Reference to the back element.
+\item
+  \texttt{len()\ -\textgreater{}\ usize}: Number of elements.
+\item
+  \texttt{is\_empty()\ -\textgreater{}\ bool}: \texttt{true} if empty.
+\item
+  \texttt{iter()}: Iterator from front to back.
+\end{itemize}
+
+\subsection{LinkedList Methods}\label{linkedlist-methods}
+
+\texttt{std::collections::LinkedList} is a doubly-linked list.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{new()}: Creates an empty \texttt{LinkedList}.
+\item
+  \texttt{push\_back(value)\ -\textgreater{}\ ()}: Appends an element to
+  the back.
+\item
+  \texttt{push\_front(value)\ -\textgreater{}\ ()}: Prepends an element
+  to the front.
+\item
+  \texttt{pop\_back()\ -\textgreater{}\ Option\textless{}T\textgreater{}}:
+  Removes and returns the back element.
+\item
+  \texttt{pop\_front()\ -\textgreater{}\ Option\textless{}T\textgreater{}}:
+  Removes and returns the front element.
+\item
+  \texttt{front()\ -\textgreater{}\ Option\textless{}\&T\textgreater{}}:
+  Reference to the front element.
+\item
+  \texttt{back()\ -\textgreater{}\ Option\textless{}\&T\textgreater{}}:
+  Reference to the back element.
+\item
+  \texttt{len()\ -\textgreater{}\ usize}: Number of elements.
+\item
+  \texttt{is\_empty()\ -\textgreater{}\ bool}: \texttt{true} if empty.
+\item
+  \texttt{iter()}: Iterator from front to back.
+\end{itemize}
+
+\subsection{Common Derivable Traits}\label{common-derivable-traits}
+
+Add with \texttt{\#{[}derive(...){]}} on a \texttt{struct} or
+\texttt{enum}:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{Debug}: Enables formatting with \texttt{\{:?\}} in
+  \texttt{println!} / \texttt{format!}.
+\item
+  \texttt{Clone}: Provides \texttt{.clone()} to produce a deep copy.
+\item
+  \texttt{Copy}: Value is copied (bitwise) on assignment instead of
+  moved. Requires \texttt{Clone}. Only valid for types whose fields are
+  all \texttt{Copy} (e.g., no \texttt{String}, no
+  \texttt{Vec\textless{}T\textgreater{}}).
+\item
+  \texttt{PartialEq}: Enables \texttt{==} and \texttt{!=}.
+\item
+  \texttt{Eq}: Marker trait for total equality (no \texttt{NaN}-like
+  values). Requires \texttt{PartialEq}. Needed (with \texttt{Hash}) for
+  \texttt{HashMap} / \texttt{HashSet} keys.
+\item
+  \texttt{PartialOrd}: Enables \texttt{\textless{}},
+  \texttt{\textless{}=}, \texttt{\textgreater{}},
+  \texttt{\textgreater{}=} via \texttt{partial\_cmp}.
+\item
+  \texttt{Ord}: Total ordering via \texttt{cmp}. Requires \texttt{Eq}
+  and \texttt{PartialOrd}. Needed for \texttt{BTreeMap} /
+  \texttt{BTreeSet} keys and \texttt{BinaryHeap} elements.
+\item
+  \texttt{Hash}: Enables use as a \texttt{HashMap} / \texttt{HashSet}
+  key. Typically combined with \texttt{Eq}.
+\item
+  \texttt{Default}: Provides \texttt{T::default()} that returns a
+  default value.
+\end{itemize}
+
+Example:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AttributeTok{\#[}\NormalTok{derive}\AttributeTok{(}\BuiltInTok{Debug}\OperatorTok{,} \BuiltInTok{Clone}\OperatorTok{,} \BuiltInTok{PartialEq}\OperatorTok{,} \BuiltInTok{Eq}\OperatorTok{,} \BuiltInTok{Hash}\AttributeTok{)]}
+\KeywordTok{struct}\NormalTok{ Point }\OperatorTok{\{}\NormalTok{ x}\OperatorTok{:} \DataTypeTok{i32}\OperatorTok{,}\NormalTok{ y}\OperatorTok{:} \DataTypeTok{i32} \OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}
