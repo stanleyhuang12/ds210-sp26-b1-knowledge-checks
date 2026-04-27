@@ -693,9 +693,11 @@ Call it from `main` once with `&[10, 3, 7, 25, 4]` and once with `&[1.5_f64, 2.5
 
 ## Long Coding Challenges (coding + long tag)
 
-**Write a program that counts word frequencies in a sentence and prints the three most frequent words, along with their counts, in descending order of frequency.**
+**Write a program that:**
+- counts word frequencies in a sentence and
+- prints the three most frequent words, along with their counts, in descending order of frequency.
 
-Use the sentence `"the quick brown fox jumps over the lazy dog the fox runs fast over the hill"`. Split on whitespace to get words (do not worry about punctuation or case). Break ties by alphabetical order of the word.
+Use the sentence `"the quick brown fox jumps over the lazy dog the fox runs fast over the hill"`. Split on whitespace to get words (do not worry about punctuation or case). **Break ties by alphabetical order of the word.**
 
 Expected output:
 
@@ -740,7 +742,13 @@ Expected output:
 
 ---
 
-**Build a small "grade book". Given `let entries = vec![("carol", 72), ("alice", 95), ("bob", 58), ("alice", 88), ("bob", 80)];`, insert each pair into a `BTreeMap<&str, Vec<i32>>` keyed by name, with the list of that student's scores as the value. Then iterate the map (which will give names in alphabetical order) and print each student's name followed by their average score, formatted to one decimal place.**
+**Build a small "grade book"**
+- Given `let entries = vec![("carol", 72), ("alice", 95), ("bob", 58), ("alice", 88), ("bob", 80)];`,
+- insert each pair into a `BTreeMap<&str, Vec<i32>>` keyed by name, with the list of that student's scores as the value.
+- Then iterate the map (which will give names in alphabetical order)
+    - and print each student's name followed by their average score, formatted to one decimal place.
+
+**Hint:** To print 1 decimal place, use `{:.1}` in the `println!` macro.
 
 Expected output:
 
@@ -759,9 +767,12 @@ carol 72.0
 
 ---
 
-**Write a function `kth_largest(nums: &[i32], k: usize) -> Option<i32>` that returns the `k`-th largest value in the slice (1-indexed). If `k` is zero or larger than the slice length, return `None`. Use a `BinaryHeap` to find the answer.**
-
-Call the function from `main` with `&[7, 2, 9, 4, 11, 3]` and `k = 3`, and print the result with `{:?}`.
+**Write:**
+- a function `kth_largest(nums: &[i32], k: usize) -> Option<i32>` that returns the `k`-th largest value in the slice (1-indexed).
+- If `k` is zero or larger than the slice length, return `None`.
+- Use a `BinaryHeap` to find the answer
+- Call the function from `main` with `&[7, 2, 9, 4, 11, 3]` and `k = 3`
+- Print the result with `{:?}`.
 
 Expected output:
 
@@ -804,7 +815,10 @@ false
 
 ---
 
-**Write a function `moving_avg(values: &[f64], window: usize) -> Vec<f64>` that computes the rolling average over a sliding window of size `window`. Use a `VecDeque<f64>` to track the window. Only emit an average once the window is fully populated, so the output length is `values.len() - window + 1` (or empty if `values.len() < window`).**
+**Implement the following:**
+- Write a function `moving_avg(values: &[f64], window: usize) -> Vec<f64>` that computes the rolling average over a sliding window of size `window`.
+- Use a `VecDeque<f64>` to track the window.
+- Only emit an average once the window is fully populated, so the output length is `values.len() - window + 1` (or empty if `values.len() < window`).**
 
 Call the function from `main` with `values = &[1.0, 2.0, 3.0, 4.0, 5.0]` and `window = 3`, and print each result on its own line, formatted to one decimal place.
 
@@ -825,9 +839,26 @@ Expected output:
 
 ---
 
-**Define a trait `Summary` with a single method `summary(&self) -> String`. Implement `Summary` for two structs: `Tweet { user: String, text: String }` and `Article { title: String, body: String }`. The tweet summary should be `"@user: text"`, and the article summary should be `"title — first 20 chars of body"` (use `.chars().take(20).collect::<String>()` to get the first 20 characters).**
+**Implement the following article and tweet structs and trait:**
+- Define a trait `Summary` with a single method `summary(&self) -> String`.
+- Define two structs: `Tweet { user: String, text: String }` and `Article { title: String, body: String }`.
+- Implement `Summary` for the two structs.
+    - The tweet summary should be `"@user: text"`, and
+    - the article summary should be `"title — first 20 chars of body"`
+        - (use `.chars().take(20).collect::<String>()` to get the first 20 characters)
+- In `main`, create:
+    - A `Tweet` with user `"alice"` and text `"hello rust!"`
+    - An `Article` with title `"DS210"` and body `"Rust is a systems language."`
+    - Call the `summary` method for each and print the result.
 
-In `main`, create one of each, put both into a `Vec<Box<dyn Summary>>`, iterate over the vector, and print each summary.
+**Hint:** Use the `format!` macro to create the summary strings.
+
+Expected output:
+
+```text
+@alice: hello rust!
+DS210 — Rust is a systems language.
+```
 
 ```rust,editable
 
@@ -847,7 +878,12 @@ let readings = vec![
 ];
 ```
 
-**Write a program that prints every city whose temperature is above 75°F, with its temperature converted to Celsius (formula: `(f - 32.0) * 5.0 / 9.0`), one per line. Sort the output alphabetically by city. Use iterator methods (`filter`, `map`, `collect`, `sort_by_key`, ...) rather than explicit loops.**
+**Write a program that:**
+- prints every city whose temperature is above 75°F,
+    - with its temperature converted to Celsius (formula: `(f - 32.0) * 5.0 / 9.0`),
+    - one per line.
+- Sort the output alphabetically by city.
+- Use iterator methods (`filter`, `map`, `collect`, `sort_by_key`, ...) rather than explicit loops.
 
 Each printed line should look like `Phoenix 39.2` (temperature formatted to one decimal place).
 
@@ -877,7 +913,11 @@ Each printed line should look like `Phoenix 39.2` (temperature formatted to one 
 
 ---
 
-**You are given `let scores = vec![("alice", 90), ("bob", 75), ("alice", 82), ("carol", 88), ("bob", 91), ("alice", 79)];`. Using the `Entry` API on a `HashMap<&str, (i32, i32)>` (where the value is `(total_points, count)`), compute each student's average. Then print a line for each student in alphabetical order, formatted `name avg` with the average rounded to one decimal place.**
+**Implement the following:**
+- You are given `let scores = vec![("alice", 90), ("bob", 75), ("alice", 82), ("carol", 88), ("bob", 91), ("alice", 79)];`
+- Using the `Entry` API on a `HashMap<&str, (i32, i32)>` (where the value is `(total_points, count)`),
+- compute each student's average.
+- Then print a line for each student in alphabetical order, formatted `name avg` with the average rounded to one decimal place.
 
 Expected output:
 

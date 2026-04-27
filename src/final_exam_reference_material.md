@@ -23,6 +23,7 @@ pandoc -s src/final_exam_reference_material.md -o generated_exams/final_exam_ref
 * `sum() -> S` -> Sum all elements (works on numeric iterators)
 * `count() -> usize` -> Count the number of elements in the iterator
 * `copied() -> Copied<Self>` -> Create iterator of owned copies from an iterator of references
+* `find(|x| ...) -> Option<Self::Item>` -> Return the first element for which the closure is true (`None` if none)
 
 ## String and &str Methods
 
@@ -47,7 +48,11 @@ pandoc -s src/final_exam_reference_material.md -o generated_exams/final_exam_ref
 * `v.iter() -> Iter<'_, T>` -> Iterator of immutable references `&T`
 * `v.iter_mut() -> IterMut<'_, T>` -> Iterator of mutable references `&mut T`
 * `v.into_iter() -> IntoIter<T>` -> Consuming iterator of owned values `T`
+* `v.sort() -> ()` -> Sort in place in ascending order (requires `T: Ord`)
 * `v.sort_by(|a, b| ...) -> ()` -> Sort in place using a comparison closure (closure returns `Ordering`)
+* `v.sort_by_key(|x| ...) -> ()` -> Sort in place using a key function
+* `v.contains(&x) -> bool` -> `true` if the vector contains `x` (O(n) linear scan)
+* `v.to_vec() -> Vec<T>` -> Copy a slice `&[T]` into a new `Vec<T>` (requires `T: Clone`)
 
 ## Option Methods
 
@@ -61,9 +66,12 @@ pandoc -s src/final_exam_reference_material.md -o generated_exams/final_exam_ref
 ## Other Useful Methods
 
 * `val.clone() -> T` -> Create a deep copy of the value
-* `a.cmp(&b) -> std::cmp::Ordering` -> Compare two values
+* `a.cmp(&b) -> std::cmp::Ordering` -> Compare two values; returns `Ordering::Less`, `Equal`, or `Greater`
+* `ordering.then(other: Ordering) -> Ordering` -> Use `other` as a tiebreaker when `ordering` is `Equal` (e.g. `a.cmp(&b).then(x.cmp(&y))`)
+* `val.into() -> U` -> Convert `val` into type `U` via the `Into`/`From` trait (e.g. `"text".into()` produces a `String`)
 * `(x as f64).sqrt() -> f64` -> Square root of a floating-point number
 * `format!("...", args) -> String` -> Like `println!` but returns a `String` instead of printing
+* `print!("...", args)` -> Like `println!` but does **not** append a newline
 * `{:?}` -> Debug format specifier (in `println!` / `format!`)
 * `{:.2}` -> Display with 2 decimal places
 
@@ -91,14 +99,20 @@ pandoc -s src/final_exam_reference_material.md -o generated_exams/final_exam_ref
 ### Entry API:
 
 * `entry(key).or_insert(value)`: Returns a mutable reference to the value in the map, if any, that is equal to the given key. If the key is not present, inserts the given value and returns a mutable reference to the new value.
+* `entry(key).or_insert_with(|| ...)`: Like `or_insert`, but the default value is computed lazily from a closure (useful when construction is expensive, e.g. `or_insert_with(Vec::new)`).
 
 ### Iterators and Views:
 
 * `iter()`: Returns an immutable iterator over the key-value pairs in the map.
 * `iter_mut()`: Returns a mutable iterator over the key-value pairs in the map.
+* `into_iter()`: Returns a consuming iterator of owned `(key, value)` pairs (moves the map).
 * `keys()`: Returns an iterator over the keys in the map.
 * `values()`: Returns an iterator over the values in the map.
 * `values_mut()`: Returns a mutable iterator over the values in the map.
+
+### Indexing:
+
+* `map[&key]`: Returns a reference to the value for `key`. **Panics** if the key is absent. Use `get` for a non-panicking alternative.
 
 ## HashSet Methods
 
@@ -149,17 +163,23 @@ pandoc -s src/final_exam_reference_material.md -o generated_exams/final_exam_ref
 ### Entry API:
 
 * `entry(key).or_insert(value)`: Returns a mutable reference to the value in the map, if any, that is equal to the given key. If the key is not present, inserts the given value and returns a mutable reference to the new value.
+* `entry(key).or_insert_with(|| ...)`: Like `or_insert`, but the default value is computed lazily from a closure (e.g. `or_insert_with(Vec::new)`).
 
 ### Iterators and Views:
 
 * `iter()`: Returns an immutable iterator over the key-value pairs in the map.
 * `iter_mut()`: Returns a mutable iterator over the key-value pairs in the map.
+* `into_iter()`: Returns a consuming iterator of owned `(key, value)` pairs (moves the map).
 * `keys()`: Returns an iterator over the keys in the map.
 * `values()`: Returns an iterator over the values in the map.
 * `values_mut()`: Returns a mutable iterator over the values in the map.
 * `range(start..end)`: Returns an iterator over the key-value pairs in the map in the range `[start, end)`.
 * `first_key_value()`: Returns the first key-value pair in the map.
 * `last_key_value()`: Returns the last key-value pair in the map.
+
+### Indexing:
+
+* `map[&key]`: Returns a reference to the value for `key`. **Panics** if the key is absent. Use `get` for a non-panicking alternative.
 
 ## BTreeSet Methods
 
