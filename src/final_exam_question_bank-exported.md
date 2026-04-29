@@ -588,8 +588,6 @@ Call it in `main` with `"rust"` and print the resulting map with `{:?}`.
 
 **In `main`, build a `BTreeMap<&str, i32>` from the pairs `("banana", 3)`, `("apple", 5)`, `("cherry", 2)`, and then iterate and print each `name score` pair on its own line.**
 
-The output should be in alphabetical order by name because of the map type.
-
 ```rust,editable
 
 
